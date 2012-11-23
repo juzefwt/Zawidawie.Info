@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+
+<div id="container-full">
+    <div class="content">
+        <h1>Twoje konto zostało utworzone</h1>
+        <div>
+            <p>Witaj '{{ user.username }}' w gronie użytkowników serwisu Zawidawie.info!<br />
+                Już teraz możesz w pełni korzystać z serwisu.
+            </p>
+            <p><a href="http://zawidawie.info">Przejdź do strony głównej</a></p>
+        </div>
+
+    </div>
+</div>
+
+{% endblock body %}

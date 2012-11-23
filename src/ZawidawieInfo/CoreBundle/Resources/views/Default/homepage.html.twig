@@ -1,0 +1,62 @@
+{% extends '::base.html.twig' %}
+
+{% block newsticker %}
+  {% if shortNews %}
+  <div id="newsticker">
+  	<b>PILNE</b>
+  	<ul>
+		{% for news in shortNews %}
+		<li><a href="{{ path('news_show', {'slug': news.slug })}}">{{ news.title }}</a></li>
+		{% endfor %}
+  	</ul>
+  </div>
+  {% endif %}
+
+{% endblock %}
+
+{% block body %}
+
+  <div id="container">
+  	<div class="content">
+		{% include 'ZawidawieInfoCoreBundle:Default:latestNews.html.twig' with {'mainNews': mainNews, 'latestNews' : latestNews} %}
+		{% include 'ZawidawieInfoCoreBundle:Default:latestInvestments.html.twig' with {'investments' : investments} %}
+		<h2>Firmy i usługi</h2>
+		{% include 'ZawidawieInfoCoreBundle:Default:catalog.html.twig' with {'keywords': keywords} %}
+  	</div>
+  </div>
+  
+  <div id="sidebar">
+  	<div class="content">
+		{% include 'ZawidawieInfoCoreBundle:Default:latestArticles.html.twig' with {'mainArticle': mainArticle, 'latestArticles' : latestArticles} %}
+		{% include 'ZawidawieInfoCoreBundle:Default:latestPosts.html.twig' with {'latestPosts' : latestPosts} %} 
+		{% include 'ZawidawieInfoCoreBundle:Default:latestPhotos.html.twig' with {'latestPhotos' : latestPhotos} %}
+                {% include 'ZawidawieInfoCoreBundle:Default:latestAds.html.twig' with {'latestAds' : latestAds} %}
+
+		<h3>Odwiedź także</h3>
+		<ul class="links">
+			<li><a target="_blank" href="http://www.mkspolar.pl/">Klub sportowy MKS Polar</a></li>
+			<li><a target="_blank" href="http://www.orzelpawlowice.futbolowo.pl">Osiedlowy Klub Sportowy Orzeł Pawłowice</a></li>
+			<li><a target="_blank" href="http://www.wkaikido.pl">Wrocł. Klub Aikido</a></li>
+			<li><a target="_blank" href="http://rowery.eko.org.pl/">Portal Rowerowy Wrocław</a></li>
+			<li><a target="_blank" href="http://stachuriada.pl/zakrzow/">Dawny Zakrzów</a></li>
+			<li><a target="_blank" href="http://jeziorowa.prv.pl/">Najdawniejsze dzieje Pawłowic</a></li>
+			<li><a target="_blank" href="http://www.km.wroclaw.pl/">Wrocławskie Forum Komunikacyjne</a></li>
+			<li><a target="_blank" href="http://wroclaw.naszemiasto.pl/kontakty_adresy/">Informator miejski &mdash; NaszeMiasto.pl</a></li>
+		</ul>
+		<br class="clear"/>
+		<h3>Osiedle w sieci</h3>
+		<ul class="links">
+			<li><a target="_blank" href="http://www.wilanowskie.pl">Os. Wilanowskie (Zatorska/Wilanowska)</a></li>
+			<li><a target="_blank" href="http://www.zlociste.lagwus.pl">Forum os. Złociste Jarzębiny - ul. Zatorska</a></li>
+			<li><a target="_blank" href="http://www.poleska.net">Forum mieszkańców ul. Poleskiej</a></li>
+			<li><a target="_blank" href="http://www.milostowska.pl">Forum Miłostowska 1-40</a></li>
+			<li><a target="_blank" href="http://www.sm-krzywousty.com.pl">SM B. Krzywoustego</a></li>
+			<li><a target="_blank" href="http://poleska.e-wro.com">Wspólnota mieszkaniowa Poleska 17-41</a></li>
+			<li><a target="_blank" href="http://www.litewska.net">Forum mieszkańców ul. Litewskiej</a></li>
+		</ul>
+  		<br class="clear"/>
+                <h3 style="font-size:14px;font-weight:bold;color:#000"><a href="http://www.jobrapido.pl/?q=wrocław">Wrocław - znajdź pracę z Jobrapido</a></h3>
+  	</div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+<div id="article-container">
+	<div id="article-stripe">
+		{% if mainArticle.hasPhoto %}
+			<a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">	
+				<img src="{{ ('uploads/photos/' ~ mainArticle.leadingPhoto.path)|apply_filter('article_stripe') }}"
+				    title="{{ mainArticle.leadingPhoto.title }}"/>
+			</a>
+		{% endif %}
+		<div class="text">
+			<h1><a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.title }}</a></h1>
+			<p><a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.content|striptags|truncate(80)|html_entity_decode }}<span class="more">&nbsp;czytaj dalej&nbsp;&raquo;</span></a></p>
+		</div>
+	</div>
+	
+	{% for article in latestArticles %}
+		<h2><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>
+	{% endfor %}
+	<p class="next"><a href="{{ path('article_index') }}">pozostałe artykuły&nbsp;&raquo;</a></p>
+</div>

@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ ad.title }} : Ogłoszenia : Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container-full">
+    <div class="content">
+        <p><a href="{{ path('ads_index') }}">Ogłoszenia</a></p>
+
+        <h1>{{ ad.title }}</h1>
+        <br/>
+
+        <p>
+            <small>
+                Dodane: {{ ad.createdAt|date('d.m.Y') }}{% if ad.hasUser %}, {{ ad.user.username }}{% endif %}</small>
+        </p>
+        <p>{{ ad.content|striptags|nl2br }}</p><br/><br/>
+
+    </div>
+</div>
+
+        {% endblock %}

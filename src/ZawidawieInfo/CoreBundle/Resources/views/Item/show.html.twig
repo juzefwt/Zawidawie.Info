@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ item.name }} : {{ item.typeNamePlural }} : Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container">
+  	<div class="content">
+                {% if item.parentItem == null %}
+                <p><a href="{{ path('item_show', {'slug': item.slug}) }}">{{ item.parentItem.name }}</a></p>
+                {% endif %}
+  		<h1>{{ item.name }}</h1>
+  		<p class="more">
+		{% if is_granted('ROLE_SUPER_ADMIN') %}
+		<a href="{{ path('item_edit', { 'id': item.id }) }}">Edytuj</a>
+		&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('item_delete', { 'id': item.id }) }}">Usuń</a>
+		{% endif %}
+		</p>
+		{{ item.description|html_entity_decode }}
+  		<br class="clear"/>
+
+		{% if photos.nbResults > 0 %}
+		  <h2>Zdjęcia</h2>
+		  {% for photo in photos %}
+		    <a href="{{ path('photo_show', {'slug': photo.slug}) }}" title="{{ photo.title }}"><img src="{{ ('uploads/photos/' ~ photo.path)|apply_filter('thumbnail') }}" style="float:left" /></a>
+		  {% endfor %}
+		  <br class="clear"/>
+		  {% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': photos} %}
+		{% endif %}
+
+		{% if subitems %}
+		  <h2>Powiązane</h2>
+                  <ul>
+		  {% for item in subitems %}
+		    <li><a href="{{ path('item_show', { 'slug': item.slug }) }}">{{ item.name }}</a></li>
+		  {% endfor %}
+                  </ul>
+		{% endif %}
+  	</div>
+  </div>
+  
+  <div id="sidebar">
+  	<div class="content">
+                {% if attachments %}
+                  <h2>Załączniki</h2>
+                  <ul>
+                  {% for attachment in attachments %}
+                    <li><a href="{{ attachment.hasFile ? asset('uploads/item_files/' ~ attachment.path) : attachment.url }}">{{ attachment.name }}</a></li>
+                  {% endfor %}
+                  </ul>
+                  <a href="{{ path('item_attach_new') }}" class="btn">Dodaj załącznik</a>
+                  <br class="clear" />
+                {% endif %}
+
+		{% if articles %}
+		  <h2>Artykuły</h2>
+                  <ul>
+		  {% for article in articles %}
+		    <li><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></li>
+		  {% endfor %}
+                  </ul>
+		{% endif %}
+
+		{% if related %}
+		  <h2>Inne {{ item.typeNamePlural }}</h2>
+		  <ul>
+		  {% for item in related %}
+		    <li><a href="{{ path('item_show', { 'slug': item.slug }) }}">{{ item.name }}</a></li>
+		  {% endfor %}
+		  </ul>
+		{% endif %}
+  		<br class="clear"/>
+  	</div>
+  </div>
+
+{% endblock %}

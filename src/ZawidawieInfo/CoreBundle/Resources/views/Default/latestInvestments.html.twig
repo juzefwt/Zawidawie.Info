@@ -1,0 +1,7 @@
+<h2>Inwestycje</h2>
+<ul class="objects">
+  {% for photo in investments %}
+    <li>{% include 'ZawidawieInfoCoreBundle:Item:showcase.html.twig' with {'photo' : photo} %}</li>
+  {% endfor %}
+</ul>
+<br class="clear" />

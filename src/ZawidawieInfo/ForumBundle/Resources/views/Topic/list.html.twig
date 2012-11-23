@@ -1,0 +1,48 @@
+{% set pagination %}{% if topics.haveToPaginate %}{{ pagerfanta(topics, 'default', pagerOptions) }}{% endif %}{% endset %}
+{% set newTopicUrl %}{{ path("herzult_forum_category_topic_new", {"slug": category.slug} ) }}{% endset %}
+
+<p>
+  <a href="{{ newTopicUrl|raw }}" class="btn">Dodaj temat</a>
+</p>
+
+<br class="clear"/>
+
+<table class="forum">
+        <thead>
+                <tr>
+                        <th>Temat</th>
+                        <th width="80px" class="thc">Wyświetleń</th>
+                        <th width="80px" class="thc">Odpowiedzi</th>
+                        <th width="250px">Ostatni post</th>
+                </tr>
+        </thead>
+        <tbody>
+        {% for topic in topics %}
+            <tr class="{{ loop.index is odd ? "odd": "even" }}">
+                <td class="subject">
+                  <a href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a><br />
+                  {% if is_granted('ROLE_SUPER_ADMIN') %}<a class="delete" href="{{ path('herzult_forum_topic_delete', { "id": topic.id }) }}">Usuń temat</a>
+                  {% endif %}
+                </td>
+                <td class="right">{{ topic.numViews|raw }}</td>
+                <td class="right">{{ topic.numPosts }}</td>
+                <td class="last_post"><a href="{{ forum_urlForPost(topic.lastPost) }}">{{ forum_timeInWords(topic.lastPost.createdAt|date('U')) }}</a><br />napisał(a) {{ topic.lastPost.authorName|default("Anonim") }}</td>
+                <!--<td class="feed"><a href="{{ forum_urlForTopicAtomFeed(topic) }}" title="{{ "Follow this topic"|trans }}" class="herzult_forum_feed_link"></a>-->
+            </tr>
+        {% endfor %}
+        </tbody>
+</table>
+
+<p>
+  <a href="{{ newTopicUrl|raw }}" class="btn">Dodaj temat</a>
+</p>
+
+<br class="clear"/>
+
+<div class="bar bottom clearfix">
+    <div class="pagination">{{ pagination|raw }}</div>
+</div>
+
+
+
+

@@ -1,0 +1,11 @@
+herzult_forum_index:
+    pattern: /
+    defaults: { _controller: ZawidawieInfoForumBundle:Forum:index }
+
+lichess_herzult_forum_search:
+    pattern: /search
+    defaults: { _controller: ZawidawieInfoForumBundle:Search:search }
+
+forum_post_edit:
+    pattern: /post/edit/{id}
+    defaults: { _controller: ZawidawieInfoForumBundle:Post:edit }

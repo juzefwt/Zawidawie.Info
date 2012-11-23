@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ query }} - Psie Pole, Zakrzów, Pawłowice - Zawidawie.info{% endblock %}
+{% block description %}Adresy, godziny otwarcia, oferta. Firmy i usługi w rejonie Psiego Pola.{% endblock %}
+{% block body %}
+
+<div id="container-full">
+      <div class="content">
+	      <p><a href="{{ path("catalog_index") }}">Firmy i Usługi</a></p>
+	      <h1>{{ query }}</h1>
+	      <ul id="catalog_list">
+	      {% for item in items %}
+		{% include 'ZawidawieInfoCoreBundle:Catalog:item.html.twig' with {'item': item} %}
+	      {% else %}
+	      <li><div class="alert">Niestety brak tu firm, których szukasz.</div></li>
+	      {% endfor %}
+	      </ul>
+	      {% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': items} %}
+      </div>
+</div>
+
+{% endblock %}

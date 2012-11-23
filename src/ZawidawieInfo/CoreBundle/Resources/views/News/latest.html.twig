@@ -1,0 +1,6 @@
+<h3>{{ title }}</h3>
+<ul class="links">
+{% for n in news %}
+<li><a href="{{ path('news_show', { 'slug': n.slug }) }}">{{ n.title }}</a></li>
+{% endfor %}
+</ul>

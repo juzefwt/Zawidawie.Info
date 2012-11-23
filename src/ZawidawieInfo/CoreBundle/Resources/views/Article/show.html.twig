@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ article.title }} - artykuły : Zawidawie.info{% endblock %}
+{% block description %}{{ article.content|striptags|truncate(150)|html_entity_decode }}{% endblock %}
+
+{% block body %}
+
+<div id="container">
+    <div class="content">
+        <h1>{{ article.title }}</h1>
+        {% if article.hasPhoto %}
+        <div style="float:right;width:150px;padding:5px">
+            {% for photo in article.relatedPhotos %}
+            <a href="{{ path('photo_show', {'slug': photo.photo.slug}) }}" target="_blank"
+               title="{{ photo.photo.title }}"><img
+                    src="{{ ('uploads/photos/' ~ photo.photo.path)|apply_filter('thumbnail') }}"/></a>
+            <br class="clear"/>
+            <span style="display:block;padding:5px 5px 5px 15px"><a
+              href="{{ path('photo_show', {'slug': photo.photo.slug}) }}"
+              target="_blank">{{ photo.photo.title }}</a></span>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <p class="more">
+            {{ article.user.username }},{{ article.createdAt|date('d.m.Y')}}&nbsp;&nbsp;&nbsp;
+            {% if is_granted('ROLE_SUPER_ADMIN') %}
+            <a href="{{ path('article_edit', { 'id': article.id }) }}">Edytuj</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('article_delete', { 'id': article.id }) }}">Usuń</a>
+            {% endif %}
+        </p>
+        {{ article.content|raw }}
+        <br class="clear"/>
+    </div>
+</div>
+
+<div id="sidebar">
+    <div class="content">
+	{% render 'ZawidawieInfoCoreBundle:Article:latest' with {'article_to_ommit': article.id} %}
+	<br class="clear"/>
+	{% render 'ZawidawieInfoCoreBundle:News:latest' %}
+        <br class="clear"/>
+        <script type="text/javascript" id="AdTaily_Widget"
+                src="http://static.adtaily.pl/widget.js#ByDO7FaA3Ksbl1g"></script>
+        <noscript><a href="http://www.adtaily.pl">Prosta i tania reklama w Internecie sprzedawana za pomocą AdTaily</a>(PLALLADTAILY0002)
+        </noscript>
+    </div>
+</div>
+
+        {% endblock %}

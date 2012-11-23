@@ -1,0 +1,21 @@
+<div class="herzult_forum_posts_list">
+    {% for post in posts %}
+    <div class="post" id="{{ post.number|raw }}">
+        <div class="metas clearfix">
+            {% if post.author %}
+                <span class="authorName authenticated"><a href="{{ path('fos_user_profile_show', {'username': post.author.username }) }}">{{ post.author.username }}</a></span>
+            {% else %}
+                <span class="authorName">{{ post.authorName|default("Anonymous") }}</span>
+            {% endif %}
+            <span class="createdAt">{{ post.createdAt|date('Y.m.d H:i') }}</span>
+            <a class="anchor" href="{{ forum_urlForPost(post) }}">#{{ post.number|raw }}</a>
+            {% if is_granted('ROLE_SUPER_ADMIN') and post.number != 1 %}
+                <a class="delete" href="{{ path('herzult_forum_post_delete', { "id": post.id }) }}">Delete</a>
+            {% endif %}
+        </div>
+        <p class="message">
+            {{ post.message }}
+        </p>
+    </div>
+    {% endfor %}
+</div>

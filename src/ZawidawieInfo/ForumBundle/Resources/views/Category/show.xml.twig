@@ -1,0 +1,9 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{{ category.name|raw }} - ZawidawieInfo Forum</title>
+    <subtitle>{{ category.description|raw }}</subtitle>
+    <id>{{ forum_urlForCategory(category, true) }}</id>
+    <link href="{{ forum_urlForCategory(category, true) }}" rel="alternate" />
+    <link href="{{ url("herzult_forum_index") }}" />
+    <updated>{{ category.lastPost.createdAt|date("c") }}</updated>
+    {% render "ForumBundle:Topic:list" with {"category": category } %}
+</feed>

@@ -1,0 +1,2 @@
+<a href="{{ path('photo_show', {'slug': photo.slug}) }}"><img src="{{ ('uploads/photos/' ~ photo.path)|apply_filter('thumbnail') }}" /></a>
+<br /><a href="{{ path('item_show', {'slug': photo.item.slug}) }}">{{ photo.item.name }}</a>

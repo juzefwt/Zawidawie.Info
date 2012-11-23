@@ -1,0 +1,32 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container-full">
+      <div class="content">
+	<h1>Dodaj artykuł</h1>
+
+	<form action="{{ action == 'article_edit' ? path(action, {'id': article.id}) : path(action) }}" id="article_form" method="post" {{ form_enctype(form) }}>
+	    <table class="form">
+		<tr>
+		    <th><label for="NewsType_title">Tytuł</label></th>
+		    <td>{{ form_widget(form.title) }}</td>
+		</tr>
+		<tr><td colspan="2"> 
+		    {{ form_widget(form.content, {"attr": {"class": "wysiwyg_editor"}}) }}
+		</td></tr>
+		{{ form_rest(form) }}
+		<tr><th></th>
+		<td><input type="submit" class="submit" value="Zapisz" /></td>
+		</td></tr>
+	    </table>
+	</form>
+
+	<br class="clear"/>
+      </div>
+</div>
+
+{% render "IHQSWysiwygBundle:Script:init" %}
+{% endblock %}

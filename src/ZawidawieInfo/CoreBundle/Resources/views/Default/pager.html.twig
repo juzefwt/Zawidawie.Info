@@ -1,0 +1,5 @@
+{% if pager.haveToPaginate %}
+<div class="pager">
+    {{ pagerfanta(pager, 'default', {'proximity': 3, 'previous_message': 'wstecz', 'next_message': 'dalej'}) }}
+</div>
+{% endif %}

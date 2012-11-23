@@ -1,0 +1,9 @@
+<h1><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h1>
+<p class="more">{{ article.createdAt|date('d.m.Y') }}, {{ article.user.username }}&nbsp;&nbsp;&nbsp;
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+<a href="{{ path('article_edit', { 'id': article.id }) }}">Edytuj</a>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('article_delete', { 'id': article.id }) }}">Usuń</a>
+{% endif %}
+</p>
+{{ article.content|striptags|truncate(150)|html_entity_decode }}
+<p><a href="{{ path('article_show', { 'slug': article.slug }) }}">&nbsp;Czytaj dalej &raquo;</a></p>

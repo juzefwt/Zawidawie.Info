@@ -1,0 +1,26 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+
+<div id="container-full">
+    <div class="content">
+      <h1>Edytuj post</h1>
+      <br />
+
+      {% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'Post_message'} %}
+
+      <form action="{{ path("forum_post_edit", {"id": post.id } ) }}" id="post_form" method="post" {{ form_enctype(form) }}>
+	  <table class="form">
+	      <tr>
+		  <td>{{ form_widget(form.message) }}</td>
+	      </tr>
+	      {{ form_rest(form) }}
+	      <tr>
+	      <td><input type="submit" class="submit" value="Zapisz" /></td>
+	      </td></tr>
+	  </table>
+      </form>
+
+    </div>
+</div>
+
+{% endblock %}

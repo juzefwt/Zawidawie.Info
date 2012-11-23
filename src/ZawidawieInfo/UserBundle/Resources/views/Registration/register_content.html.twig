@@ -1,0 +1,65 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#fos_user_registration_form_plainPassword').showPassword();
+    });
+</script>
+
+<div id="container-full">
+      <div class="content">
+		<h1>Utwórz konto</h1>
+		<div>
+		    <p><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px;border:none;margin:0;float:left" alt="facebook" title="Zaloguj się kontem FB" /><a href="{{ path('MachSavelBundle_connect', {'service': 'Facebook'}) }}" style="display:block;float:left;margin-top:5px">Zaloguj się przez konto FB</a></p>
+		    <br class="clear" />
+		    <p><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px;border:none;margin:0;float:left" alt="google" title="Zaloguj się kontem Google" /><a href="{{ path('MachSavelBundle_connect', {'service': 'Google'}) }}" style="display:block;float:left;margin-top:5px">Zaloguj się przez konto Google</a></p>
+		    <br class="clear" />
+        </div>
+		<!--Formularz rejestracyjny-->
+		<div id="reg-form">
+			<div class="alert" id="reg-form-error" style="display: none">Nastąpił błąd podczas wysyłania formularza - nie można połączyć się z serwerem. Spróbuj ponownie za chwilę...</div>
+			<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+			{{ form_errors(form) }}
+			<table class="form" style="width: 70%">
+				<tr>
+				  <th style="width:180px">
+				    Nazwa użytkownika:
+				  </th>
+				  <td>
+				    {{ form_errors(form.username) }}
+				    {{ form_widget(form.username) }}
+				  </td>
+				</tr>
+				<tr>
+				  <th style="width:180px">
+				    Adres e-mail:
+				  </th>
+				  <td>
+				    {{ form_errors(form.email) }}
+				    {{ form_widget(form.email) }}
+				  </td>
+				</tr>
+				<tr>
+				  <th style="width:180px">
+				    Hasło:<br />
+                      <small>
+                          Min. 4 znaki
+                      </small>
+				  </th>
+				  <td>
+				    {{ form_errors(form.plainPassword) }}
+				    {{ form_widget(form.plainPassword, {'attr': {'data-typetoggle': '#toggle-password'}}) }}<br />
+                      <input id="toggle-password" type="checkbox" /><label>Pokaż hasło</label>
+				  </td>
+				</tr>
+				<tr>
+					<th></th><td>
+                    Zakładając konto, akceptujesz <a href="http://www.zawidawie.info/str/regulamin-serwisu.html" target="_blank">regulamin serwisu.</a></p>
+                    <p><input type="submit" value="Zarejestruj" class="submit" /><br />
+					</td>
+				</tr>
+			</table>
+            {{ form_rest(form) }}
+			</form><!--Koniec formularza rejestracyjnego-->
+		</div>
+      </div>
+</div>
+

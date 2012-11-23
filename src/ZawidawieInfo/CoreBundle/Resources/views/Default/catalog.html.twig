@@ -1,0 +1,22 @@
+<div class="alternative">
+    <form action="{{ path('catalog_index') }}" method="post" {{ form_enctype(searchForm) }}>
+    {{ form_label(searchForm.query) }}
+    {{ form_widget(searchForm.query) }}
+    {{ form_rest(searchForm) }}
+    <input type="submit" class="button medium green" value="Szukaj" />
+    </form>
+    <br />
+    <hr/>
+    <h3>Często szukane</h3>
+    <ul>
+    {% for keyword in keywords %}
+      <li><a href="{{ path('catalog_list', {'query': keyword}) }}">{{ keyword }}</a></li>
+    {% endfor %}
+    </ul>
+    <br class="clear"/>
+    <hr/>
+    <br class="clear"/>
+    <h3 style="float:right">Twojej firmy tu nie ma?&nbsp;<a href="{{ path('catalog_new') }}" class="plain button big orange" style="color:#fff;text-decoration:none">Dodaj firmę</a></h3>
+    <br class="clear"/>
+</div>
+<br class="clear"/>

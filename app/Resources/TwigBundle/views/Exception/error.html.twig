@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Mamy problem - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div style="text-align:center;margin:50px">
+    <h1 style="font-size:20px">Strona nie istnieje ({{ status_code }})</h1><br />
+    <h2 style="font-size:16px">Niestety nie ma tu tego, czego szukasz.</h2><br />
+    <p>Spróbuj wrócić <a href="http://zawidawie.info">na stronę główną</a>, być może tam znajdziesz coś lepszego.</p>
+</div>
+{% endblock %}

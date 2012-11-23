@@ -1,0 +1,7 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<p>
+{{ 'resetting.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}
+</p>
+{% endblock %}

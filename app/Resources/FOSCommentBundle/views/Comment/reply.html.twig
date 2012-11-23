@@ -1,0 +1,21 @@
+{% extends "FOSCommentBundle:Comment:new.html.twig" %}
+
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+{% block fos_comment_form_title %}
+    <h3>Odpowiedz do: <span class="fos_comment_reply_name_placeholder"></span></h3>
+{% endblock %}
+
+{% block fos_comment_form_submit %}
+    <a href="#" class="fos_comment_reply_cancel">Anuluj</a>
+    {{ parent() }}
+{% endblock %}

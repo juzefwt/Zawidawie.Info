@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Zdjęcia z tagiem '{{ tag.name }}' - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container">
+      <div class="content">
+	<h1>Zdjęcia oznaczone jako '{{ tag.name }}'</h1><br/>
+
+	{% for photo in photos %}
+	  <a href="{{ path('photo_show', {'slug': photo.slug}) }}" title="{{ photo.title }}"><img src="{{ ('uploads/photos/' ~ photo.path)|apply_filter('thumbnail') }}" style="float:left" /></a>
+	{% endfor %}
+	<br class="clear"/>
+	{% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': photos} %}
+
+	<br class="clear"/>
+      </div>
+</div>
+
+<div id="sidebar">
+      <div class="content">
+      </div>
+</div>
+
+{% endblock %}

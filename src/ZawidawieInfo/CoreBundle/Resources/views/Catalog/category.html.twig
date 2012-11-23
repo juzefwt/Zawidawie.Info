@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ category.name }} - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container-full">
+      <div class="content">
+	      <p><a href="{{ path("catalog_index") }}">Katalog firm</a></p>
+	      <h1>{{ category.name }}</h1>
+
+	      <ul>
+	      {% for item in items %}
+		{% include 'ZawidawieInfoCoreBundle:Catalog:item.html.twig' with {'item': item} %}
+	      {% else %}
+	      <li><h2>Brak firm w tej kategorii.</h2></li>
+	      {% endfor %}
+	      </ul>
+	      {% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': items} %}
+      </div>
+</div>
+
+{% endblock %}

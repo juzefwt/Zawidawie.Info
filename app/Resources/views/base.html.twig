@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl">
+<head>
+  <title>{% block title %}Zawidawie.info - serwis informacyjny osiedli Psie Pole, Zakrzów, Pawłowice, Kłokoczyce{% endblock %}</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="title" content="{{ block('title') }}" />
+  <meta name="robots" content="all" />
+  <meta name="description" content="{% block description %}Informacje z wrocławskich osiedli Psie Pole, Zakrzów, Zgorzelisko, Kłokoczyce i Pawłowice. Największy wortal osiedlowy we Wrocławiu. Najświeższe informacje lokalne, fora dyskusyjne, ogłoszenia, fotografie.{% endblock %}" />
+  <meta name="keywords" content="psie pole, zakrzów, zawidawie, zgorzelisko, pawłowice, kłokoczyce, osiedle, osiedla, wroclawskie" />
+  <meta name="language" content="pl" />
+  <meta name="author" content="Wojciech Treter, Marcin Chwedziak" />
+  <meta name="copyright" content="Zawidawie.info" />
+  {% javascripts
+       '@ZawidawieInfoCoreBundle/Resources/public/js/*'
+       '@ZawidawieInfoCoreBundle/Resources/public/js/vendor/jquery.showpassword.js'
+       '@IHQSWysiwygBundle/Resources/public/js/wysiwyg.js'
+       '@ZawidawieInfoWysiwygBundle/Resources/public/js/wysiwyg/ckeditor.js'
+       '@FOSCommentBundle/Resources/assets/js/*'
+       filter='?yui_js' %}
+  <script src="{{ asset_url }}"></script>
+  {% endjavascripts %}
+  {% stylesheets output="css/dump.css"
+       '@ZawidawieInfoCoreBundle/Resources/public/css/*'
+       '@FOSCommentBundle/Resources/assets/css/*'
+       filter='?cssrewrite, ?yui_css' %}
+  <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+  {% endstylesheets %}
+  <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" />
+  <link rel="alternate" type="application/rss+xml" title="Zawidawie.info - Aktualności" href="http://zawidawie.info/feeds/aktualnosci.rss" />
+</head>
+<body>
+<div id="fixwidth">
+  
+  <div id="header">
+  	<h1><a href="{{ path('homepage') }}">zawidawie.info</a></h1>
+  	<h2>Lokalny portal informacyjny</h2>
+	<a href="http://www.facebook.com/pages/Zawidawieinfo/278326342186882" class="fb_link" target="_blank">Zobacz Zawidawie.Info na Facebooku&nbsp;&raquo;</a>
+
+	  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+	  <p id="user-login">Witaj, <b><a href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">
+		  {{ app.user.username }}
+	      </a></b> ! Przejdź do <a href="{{ path('manage_content') }}">panelu użytkownika</a>. [<a href="{{ path('fos_user_security_logout') }}">
+		  Wyloguj
+	      </a>]</p>
+	  {% else %}
+	  <p id="user-login">Witaj, <strong>Nieznajomy</strong>! <a href="{{ path('fos_user_security_login') }}">Zaloguj się</a> lub <a href="{{ path('fos_user_registration_register') }}">załóż konto</a>.
+	  <a href="{{ path('MachSavelBundle_connect', {'service': 'Google'}) }}"><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px" alt="google" title="Zaloguj się kontem Google" /></a>
+	  <a href="{{ path('MachSavelBundle_connect', {'service': 'Facebook'}) }}"><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px" alt="facebook" title="Zaloguj się kontem Facebook" /></a>
+	  </p>
+
+	  {% endif %}
+
+  </div>
+
+  <div id="menu">
+    <ul id="root" class="level1">
+    <li><a href="{{ url('homepage') }}">Aktualności</a></li>
+	  <li><a href="http://zawidawie.info/forum.html">Forum dyskusyjne</a></li>
+	  <li><a href="{{ url('investments') }}">Inwestycje</a></li>
+	  <li><a href="{{ url('events') }}">Wydarzenia</a></li>
+	  <li><a href="{{ url('districts') }}">Osiedla</a></li>
+	  <li><a href="{{ url('catalog_index') }}">Firmy i Usługi</a></li>
+	  <li><a href="{{ url('ads_index') }}">Ogłoszenia</a></li>
+	  <li><a href="{{ path('static_show', {'slug' : 'onas'}) }}" title="Informacje na temat strony">O wortalu</a></li>
+          {% if is_granted("ROLE_SUPER_ADMIN") %}
+          <li><a href="{{ path('sonata_admin_dashboard') }}" title="Admin">Admin</a></li>
+          {% endif %}
+    </ul>
+  </div>
+
+  {% block newsticker %}{% endblock %}
+
+  {% include 'ZawidawieInfoCoreBundle:Default:flashes.html.twig' %}
+  
+  <div id="wrapper"> <!--główna treść-->
+  {% block body %}{% endblock %}
+  <br class="clear"/>
+  </div>
+
+  <div id="footer">
+  	<p>Copyright &copy; 2008 - {{ "now"|date("Y") }} <a href="{{ path('static_show', {'slug' : 'onas'}) }}"><strong>Zawidawie.info</strong></a> | <a href="{{ path('static_show', {'slug' : 'regulamin'}) }}">Regulamin</a> | <a href="{{ path('static_show', {'slug' : 'reklama'}) }}">Reklama</a></p>
+	<p class="more">
+	Wszelkie teksty zawarte w tym serwisie udostępniane są na zasadach 
+	licencji <a href="http://creativecommons.org/licenses/by/3.0/pl/" target="_blank">Creative Commons Attribution</a>, chyba, że w tekście wyraźnie 
+	zaznaczono inaczej.<br />Materiały udostępniane na zasadzie licencji 
+	<a href="http://creativecommons.org/licenses/by/3.0/pl/" target="_blank">Creative Commons</a> mogą być dowolnie rozpowszechniane oraz modyfikowane 
+	pod warunkiem zaznaczenia autora i źródła pochodzenia.
+	</p>
+  </div>
+</div>
+<!--Google Analytics-->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-3315166-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+</body>
+</html>

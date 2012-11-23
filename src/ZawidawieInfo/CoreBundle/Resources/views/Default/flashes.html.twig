@@ -1,0 +1,40 @@
+<div class="flashbox">
+    {% if app.session.hasFlash('error') %}
+    <p class="flash flash-error"><strong>{{ app.session.flash('error') }}</strong><a class="close"
+                                                                                     href="javascript:void(0);">Zamknij</a>
+    </p>
+    {% endif %}
+    {% if app.session.hasFlash('notice') %}
+    <p class="flash flash-notice"><strong>{{ app.session.flash('notice') }}</strong><a class="close"
+                                                                                       href="javascript:void(0);">Zamknij</a>
+    </p>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    var flashBoxTimeout;
+
+    $(document).ready(function () {
+        if ($('.flashbox').children().length > 0) {
+            setTimeout(function () {
+                $('.flashbox').animate({height:'show', opacity:'show'}, 'normal');
+            }, 500);
+
+            flashBoxTimeout = setTimeout(function () {
+                $('.flashbox').animate({height:'hide', opacity:'hide'}, 'normal');
+            }, 3000);
+
+            $('.flashbox').hover(function () {
+                clearTimeout(flashBoxTimeout);
+            }, function () {
+                flashBoxTimeout = setTimeout(function () {
+                    $('.flashbox').animate({height:'hide', opacity:'hide'}, 'normal');
+                }, 2000);
+            });
+
+            $('.flashbox .close').click(function () {
+                $('.flashbox').animate({opacity:'hide'}, 'fast');
+            });
+        }
+    });
+</script>

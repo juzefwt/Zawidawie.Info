@@ -1,0 +1,37 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Inwestycje - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container">
+      <div class="content">
+	<h1>{{ title }}</h1><br/>
+
+	{% for it in items %}
+          {% if it.latestPhoto is not null %}
+          <a href="{{ path('photo_show', {'slug': it.latestPhoto.slug}) }}">
+              <img src="{{ ('uploads/photos/' ~ it.latestPhoto.path)|apply_filter('thumbnail') }}" style="float:left;margin:5px 10px" />
+          </a>
+          {% else %}
+              <img src="{{ asset('bundles/zawidawieinfocore/images/placeholder.png') }}" style="float:left;margin:5px 10px" />
+          {% endif %}
+          <div style="float:right;width:375px">
+              <h2><a href="{{ path('item_show', {'slug': it.slug}) }}">{{ it.name }}</a></h2>
+              <p>{{ it.description|html_entity_decode }}</p>
+          </div>
+          <br class="clear" />
+	{% endfor %}
+
+	{% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': items} %}
+
+	<br class="clear"/>
+      </div>
+</div>
+
+<div id="sidebar">
+      <div class="content">
+      </div>
+</div>
+
+{% endblock %}

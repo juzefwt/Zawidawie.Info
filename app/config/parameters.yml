@@ -1,0 +1,15 @@
+parameters:
+    database_driver:   pdo_mysql
+    database_host:     localhost
+    database_port:     ~
+    database_name:     zawidawie2
+    database_user:     root
+    database_password: PLUGQ91I
+
+    mailer_transport:  smtp
+    mailer_host:       localhost
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            pl
+    secret:            dca2dd059377c0e310ef42d4458f1077a5

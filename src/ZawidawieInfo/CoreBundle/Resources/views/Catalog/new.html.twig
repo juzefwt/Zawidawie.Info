@@ -1,0 +1,77 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Katalog firm - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container-full">
+      <div class="content">
+	<p><a href="{{ path("catalog_index") }}">Firmy i Usługi</a></p>
+	<h1>Dodaj firmę</h1>
+
+	{{ form_errors(form) }}
+
+	<form action="{{ action == 'catalog_edit' ? path(action, {'id': item.id}) : path(action) }}" id="catalog_form" method="post" {{ form_enctype(form) }}>
+	    <ul class="form">
+		<li>
+		    <label for="CatalogItemType_name">Nazwa <pow style="color:red">*</pow></label>
+		    <br />{{ form_widget(form.name) }}
+		</li>
+		<li>
+		     <label for="CatalogItemType_description">Opis <pow style="color:red">*</pow></label><br />
+		      {{ form_widget(form.description, {"attr": {"class": "wysiwyg_editor"}}) }}
+		</li>
+		<li>
+		  <label for="CatalogItemType_address">Adres <pow style="color:red">*</pow></label><br />
+		      {{ form_widget(form.address) }}
+		</li>
+		<li>
+		  <label for="CatalogItemType_www">Strona WWW</label><br />
+		      {{ form_widget(form.www) }}
+		</li>
+		<li>
+		  <label for="CatalogItemType_mail">E-mail</label><br />
+		      {{ form_widget(form.mail) }}
+		</li>
+		<li>
+		  <label for="CatalogItemType_tel">Telefon</label><br />
+		      {{ form_widget(form.tel) }}
+		</li>
+		<li>
+		  <label for="CatalogItemType_photo">Logo firmy</label><br />
+		      {{ form_widget(form.photo) }}
+		</li>
+		<li><br />
+		    <h2>Usługi</h2>
+		    <p>Aby klienci mogli łatwiej Cię znaleźć, wymień usługi oraz inne słowa kluczowe kojarzące się z firmą.</p>
+		    <p><i>Np. dla kwiaciarni: kwiaty cięte, kwiaty doniczkowe, wiązanki.</i></p>
+		</li>
+		<li>
+		    <ul id="keywords" data-prototype="{{ form_widget(form.keywords.get('prototype')) | e }}">
+			{% for keyword in form.keywords %}
+			    <li>
+			      <table>
+				<tr><td>{{ form_label(keyword.name) }}</td><td>{{ form_widget(keyword.name) }}</td></tr>
+			      </table>
+			    </li>
+			{% endfor %}
+		    </ul>
+		</li>
+		{{ form_widget(form._token) }}
+		<li><th></th>
+		    <span style="color:red">*</span> - pola wymagane<br /><br />
+		    <input type="submit" class="button medium green" value="Zapisz zmiany" />
+		</li>
+	    </ul>
+	</form>
+
+	<br class="clear"/>
+      </div>
+</div>
+<script type="text/javascript">
+
+
+</script>
+
+{% render "IHQSWysiwygBundle:Script:init" %}
+{% endblock %}

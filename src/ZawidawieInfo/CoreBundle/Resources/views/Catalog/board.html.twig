@@ -1,0 +1,19 @@
+<table class="catalog">
+	{% for i in range(0, categories|length, 2) %}
+	<tr>
+		<td>
+		{% if i < categories|length %}
+			<h4><a href="{{ path('catalog_category', { 'slug' : categories[i].slug }) }}">{{ categories[i].name }}</a></h4>
+			{% include 'ZawidawieInfoCoreBundle:Catalog:subcategories.html.twig' with {'item' : categories[i]} %}
+		{% endif %}
+		</td>
+		<td>
+		{% if i+1 < categories|length %}
+			<h4><a href="{{ path('catalog_category', { 'slug' : categories[i+1].slug }) }}">{{ categories[i+1].name }}</a></h4>
+			{% include 'ZawidawieInfoCoreBundle:Catalog:subcategories.html.twig' with {'item' : categories[i+1]} %}
+		{% endif %}
+		</td>
+		
+	</tr>
+	{% endfor %}
+</table>

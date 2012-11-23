@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+{% block title %}{{ category.name }} - dodaj temat{% endblock %}
+{% block body %}
+
+<div id="container-full">
+    <div class="content">
+      <p><a href="{{ path("herzult_forum_index") }}">Forum</a> &raquo; <a href="{{ forum_urlForCategory(category) }}">{{ category.name }}</a></p>
+      <h1>Dodaj temat</h1>
+	<br />
+
+	{% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'herzult_forum_new_topic_form_firstPost_message'} %}
+
+
+	<form action="{{ path("herzult_forum_category_topic_create", {"slug": category.slug} ) }}" id="topic_form" method="post" {{ form_enctype(form) }}>
+	    <table class="form">
+		<tr>
+		    <td><label for="herzult_forum_new_topic_form_category">Forum</label></td>
+		    <td>{{ form_widget(form.category) }}</td>
+		</tr>
+		<tr>
+		    <td><label for="herzult_forum_new_topic_form_subject">Temat</label></td>
+		    <td>{{ form_widget(form.subject) }}</td>
+		</tr>
+		<tr>
+		    <td><label for="herzult_forum_new_topic_form_firstPost_message">Treść</label></td>
+		    <td>{{ form_widget(form.firstPost.message) }}</td>
+		</tr>
+		<tr><th></th>
+		<td><input type="submit" class="submit" value="Zapisz" /></td>
+		</tr>
+	    </table>
+        {{ form_widget(form.firstPost.id) }}
+        {{ form_rest(form) }}
+	</form>
+
+    </div>
+</div>
+
+{% endblock %}

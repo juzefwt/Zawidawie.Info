@@ -1,0 +1,5 @@
+<ul>
+{% for subcat in item.children %}
+	  <li>&raquo;&nbsp;<a href="{{ path('catalog_category', {'slug' : subcat.slug }) }}">{{ subcat.name}}</a></li>
+{% endfor %}
+</ul>

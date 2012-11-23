@@ -1,0 +1,9 @@
+<li>
+    <h2>&raquo;&nbsp;<a href="{{ path('catalog_show', { 'slug': item.slug }) }}">{{ item.name }}</a></h2>
+    <p>
+	{% if item.address %}
+	<strong>Adres: </strong>{{ item.address }} <br />
+	{% endif %}
+	<a href="{{ path('catalog_show', { 'slug': item.slug }) }}">zobacz więcej &raquo;</a>
+    </p>
+</li>

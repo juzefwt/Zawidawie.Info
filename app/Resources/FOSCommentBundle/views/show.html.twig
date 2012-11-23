@@ -1,0 +1,30 @@
+{#
+
+ This file is part of the FOSCommentBundle package.
+
+ (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+
+#}
+
+<div class="fos_comment_thread_show">
+
+    {% include "FOSCommentBundle:Comment:new.html.twig" with {"form": newCommentForm, "first": 0 == thread.numComments, "thread": thread} %}
+
+    <a href="{{ path("fos_comment_thread_show_feed", {"id": thread.id}) }}">{% trans from 'FOSCommentBundle' %}fos_comment_rss_feed{% endtrans %}</a>
+
+    {% if thread.numComments > 0 %}
+        <h3>
+	    Komentarze ({{ thread.numComments }})
+        </h3>
+        <div class="fos_comment_thread_comments">
+            {% render "FOSCommentBundle:Comment:tree" with {"thread": thread, "sorter": sorter, "displayDepth": displayDepth } %}
+        </div>
+    {% endif %}
+
+    <div class="fos_comment_reply_prototype">
+        {% include "FOSCommentBundle:Comment:reply.html.twig" with {"form": replyForm} %}
+    </div>
+</div>

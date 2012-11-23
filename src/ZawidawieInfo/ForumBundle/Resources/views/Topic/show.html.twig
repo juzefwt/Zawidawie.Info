@@ -1,0 +1,85 @@
+{% extends "::base.html.twig" %}
+{% block title %}{{ topic.subject }}{% if posts.currentPage > 1 %} - Strona {{ posts.currentPage }}{% endif %} - Forum Zawidawie.info{% endblock %}
+
+{% block body %}
+{% set pagination %}{% if posts.haveToPaginate %}{{ pagerfanta(posts, 'custom', {'proximity': 3, 'previous_message': 'Wstecz', 'next_message': 'Dalej', 'routeName': 'herzult_forum_topic_show', 'routeParams': {'categorySlug': topic.category.slug, 'slug': topic.slug}}) }}{% endif %}{% endset %}
+{% set replyUrl = forum_urlForTopicReply(topic) %}
+{% set isLastPage = forum_topicNumPages(topic) == posts.currentPage or forum_topicNumPages(topic) == 0 %}
+
+
+<div id="container-full">
+      <div class="content">
+              <p><a href="{{ path("herzult_forum_index") }}">Forum</a> &raquo; <a href="{{ forum_urlForCategory(topic.category) }}">{{ topic.category.name }}</a> &raquo; </p>
+              <h1>{{ topic.subject }}</h1>
+              <br class="clear"/>
+
+              <p class="pr">
+                  {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <a href="{{ replyUrl }}" class="btn">Odpowiedz</a>
+                  {% else %}
+                    <p><a href="{{ path('fos_user_security_login') }}">Zaloguj się</a>, by dodać odpowiedź.</p>
+                  {% endif %}
+              </p>
+
+              <table class="topic">
+                      <thead>
+                              <th></th>
+                              <th></th>
+                      </thead>
+                      <tfoot>
+                              <th colspan="2" class="thr"><div class="pagination">{{ pagination|raw }}</div></th>
+                      </tfoot>
+                      <tbody>
+                        {% for post in posts %}
+                        <tr class="header">
+                                <td width="180px">
+                                    {{ forum_timeInWords(post.createdAt|date('U')) }}
+                                </td>
+                                <td>
+                                    <a class="anchor" href="{{ forum_urlForPost(post) }}">#{{ post.number|raw }}</a>
+                                    <ul class="post_actions">
+                                        {% if is_granted('ROLE_SUPER_ADMIN') and post.number != 1 %}
+                                            <li><a class="delete" href="{{ path('herzult_forum_post_delete', { "id": post.id }) }}">Usuń</a></li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_SUPER_ADMIN') or app.user == post.author %}
+                                            <li><a href="{{ path('forum_post_edit', {'id': post.id }) }}">Edytuj</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </td>
+                        </tr>
+                        <tr class="post" id="{{ post.number|raw }}">
+                                <td class="author" valign="top">
+                                    {% if post.author %}
+                                        <span class="authorName authenticated" style="font-size:18px">{{ post.author.username }}</span>
+                                    {% else %}
+                                        <span class="authorName">{{ post.authorName|default("Anonim") }}</span>
+                                    {% endif %}
+                                </td>
+                                <td valign="top">
+                                        <p>{{ post.message|bbcode }}</p>
+                                </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+              </table>
+
+              {% if isLastPage %}
+                  {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <div class="topicReply">
+                        {% render "ZawidawieInfoForumBundle:Post:new" with {"topic": topic} %}
+                    </div>
+                  {% else %}
+                    <p><a href="{{ path('fos_user_security_login') }}">Zaloguj się</a>, by dodać odpowiedź.</p>
+                  {% endif %}
+              {% else %}
+
+              <p class="pr">
+                <a href="{{ replyUrl }}" class="btn">Odpowiedz</a>
+              </p>
+
+              {% endif %}
+
+              <br class="clear"/>
+      </div>
+</div>
+{% endblock %}

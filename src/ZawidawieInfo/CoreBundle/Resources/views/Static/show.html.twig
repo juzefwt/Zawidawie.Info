@@ -1,0 +1,10 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div id="container-full">
+      <div class="content">
+	{% include 'ZawidawieInfoCoreBundle:Static:' ~ slug ~ '.html.twig' %}
+	<br class="clear"/>
+      </div>
+</div>
+{% endblock %}

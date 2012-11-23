@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Forum{% endblock %}
+
+{% block body %}
+<div id="container-full">
+      <div class="content">
+    {% block content %}{% endblock %}
+      </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    '@ZawidawieInfoCoreBundle/Resources/public/vendor/jquery.hint.js'
+    filter="?yui_js" %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

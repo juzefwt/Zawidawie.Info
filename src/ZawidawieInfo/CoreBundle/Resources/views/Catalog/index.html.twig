@@ -1,0 +1,13 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Firmy i Usługi - Zawidawie.info{% endblock %}
+
+{% block body %}
+<div id="container-full">
+      <div class="content">
+	<h1>Firmy i usługi w rejonie Zawidawia</h1>
+	    {% include 'ZawidawieInfoCoreBundle:Default:catalog.html.twig' with {'keywords': keywords, 'searchForm': searchForm} %}
+  </div>
+</div>
+
+{% endblock %}

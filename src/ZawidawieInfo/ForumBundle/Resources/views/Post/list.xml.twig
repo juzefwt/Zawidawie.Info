@@ -1,0 +1,11 @@
+{% for post in posts %}
+    <entry>
+        <title>#{{ post.number|raw }} by {{ post.author|default("Anonymous") }}</title>
+        <summary>{{ post.message }}</summary>
+        <author>
+            <name>{{ post.author|default("Anonymous") }}</name>
+        </author>
+        <published>{{ post.createdAt|date("c") }}</published>
+        <link rel="alternate">{{ forum_urlForPost(post, true ) }}</link>
+    </entry>
+{% endfor %}

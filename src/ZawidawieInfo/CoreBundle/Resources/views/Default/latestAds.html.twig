@@ -1,0 +1,7 @@
+<h3>Ogłoszenia</h3>
+{% for ad in latestAds %}
+{% include 'ZawidawieInfoCoreBundle:Default:latestAd.html.twig' with {'ad': ad, 'trimmed' : true, 'linked' : true } %}
+{% endfor %}
+<p class="next"><a href="{{ path('ads_index') }}">więcej ogłoszeń</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+        href="{{ path('ads_new') }}">dodaj ogłoszenie</a></p>
+<br class="clear"/>

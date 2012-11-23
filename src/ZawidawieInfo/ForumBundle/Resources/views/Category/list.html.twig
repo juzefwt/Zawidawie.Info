@@ -1,0 +1,30 @@
+<div id="container-full">
+      <div class="content">
+        <h1>Forum Zawidawie.info</h1>
+        <table class="forum">
+            <thead>
+                <tr>
+                    <th>Kategoria</th>
+                    <th class="right">Tematy</th>
+                    <th class="right">Posty</th>
+                    <th>Ostatni post</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+                <tr class="{{ loop.index is odd ? "odd" : "even" }}">
+                    <td class="subject">
+                        <a class="category_name" href="{{ forum_urlForCategory(category)|raw }}">{{ category.name|raw }}</a>
+                        <p class="description">{{ category.description|raw }}</p>
+                    </td>
+                    <td class="right">{{ category.numTopics|raw }}</td>
+                    <td class="right">{{ category.numPosts|raw }}</td>
+                    <td class="last_post">w '<a href="{{ forum_urlForPost(category.lastPost)|raw }}">{{ category.lastPost.topic.subject }}</a>'<br />{{ forum_timeInWords(category.lastPost.createdAt|date('U')) }} napisał(a) {{ category.lastPost.authorName|default("Anonymous") }}</td>
+                    <!--<td class="feed"><a href="{{ path("herzult_forum_category_show", {"slug": category.slug, "_format": "xml"} ) }}" title="{{ "Follow this category"|trans }}" class="herzult_forum_feed_link"></a>-->
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+      </div>
+</div>

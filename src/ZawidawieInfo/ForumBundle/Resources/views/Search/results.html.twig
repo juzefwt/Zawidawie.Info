@@ -1,0 +1,30 @@
+{% extends "ZawidawieInfoForumBundle:Search:search.html.twig" %}
+
+{% block title %}Search "{{ query }}"{% endblock %}
+
+{% block results %}
+
+<br />
+<p class="lichess_title">{{ results.nbResults }} topic{{ results.nbResults > 1 ? "s" : "" }} found for "{{ query }}"</p>
+
+<div class="search_results infinitescroll">
+<div class="pager">{{ pagerfanta(results, 'default', {'proximity': 1}) }}</div>
+{% for topic in results %}
+<div class="result paginated_element {{ cycle(['odd', 'even'], loop.index) }}">
+    <a class="subject" href="{{ forum_urlForTopic(topic) }}">{{ topic.subject }}</a>
+    <p class="last_post">Last post: <a href="{{ forum_urlForPost(topic.lastPost) }}">{{ topic.lastPost.createdAt|date('Y.m.d H:i') }}</a> by {{ topic.lastPost.authorName|default("Anonymous") }}</p>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{% javascripts
+    '@ZawidawieInfoCoreBundle/Resources/public/vendor/jquery.infinitescroll.min.js'
+    '@ZawidawieInfoCoreBundle/Resources/public/js/infinitescroll.js'
+    filter="?yui_js" %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}

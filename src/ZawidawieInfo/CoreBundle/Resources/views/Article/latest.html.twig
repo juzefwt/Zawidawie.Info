@@ -1,0 +1,6 @@
+<h3>{{ title }}</h3>
+<ul class="links">
+{% for a in articles %}
+<li><a href="{{ path('article_show', { 'slug': a.slug }) }}">{{ a.title }}</a></li>
+{% endfor %}
+</ul>

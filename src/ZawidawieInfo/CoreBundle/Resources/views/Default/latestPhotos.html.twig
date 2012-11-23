@@ -1,0 +1,9 @@
+<h3>Ostatnio dodane zdjęcia</h3>
+<div class="imgdiv">
+    <p>
+    {% for photo in latestPhotos %}
+      <a href="{{ path('photo_show', {'slug': photo.slug}) }}"><img src="{{ ('uploads/photos/' ~ photo.path)|apply_filter('thumbnail') }}" /></a>
+    {% endfor %}
+    </p>
+</div>
+<br class="clear"/>

@@ -1,0 +1,57 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ news.title }} - aktualności : Zawidawie.info{% endblock %}
+{% block description %}{{ news.content|striptags|truncate(150)|html_entity_decode }}{% endblock %}
+
+{% block body %}
+
+<div id="container">
+  <div class="content">
+    <h1>{{ news.title }}</h1>
+    {% if news.hasPhoto %}
+    <div style="float:right;width:150px;padding:5px">
+      {% for photo in news.relatedPhotos %}
+      <a href="{{ path('photo_show', {'slug': photo.slug}) }}" target="_blank"
+         title="{{ photo.title }}"><img
+          src="{{ ('uploads/photos/' ~ photo.path)|apply_filter('thumbnail') }}"/></a>
+      <br class="clear"/>
+      <span style="display:block;padding:5px 5px 5px 15px"><a
+          href="{{ path('photo_show', {'slug': photo.slug}) }}" target="_blank">{{ photo.title }}</a></span>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <p class="more">
+      {{ news.user.username }}, {{ news.createdAt|date('d.m.Y')}}&nbsp;&nbsp;&nbsp;
+      {% if is_granted('ROLE_SUPER_ADMIN') %}
+      <a href="{{ path('news_edit', { 'id': news.id }) }}">Edytuj</a>
+      &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('news_delete', { 'id': news.id }) }}">Usuń</a>
+      {% endif %}
+    </p>
+    {{ news.content|raw }}
+    <br class="clear"/>
+    {% if tags is not empty %}
+    <div class="alternative">
+      Tagi: {% for tag in tags %} <a href="{{ path('news_tag', {"tag": tag.slug }) }}">{{ tag.name }}</a> {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<div id="sidebar">
+  <div class="content">
+    <h2><a href="http://zawidawie.info/feeds/aktualnosci.rss" style="line-height:55px">
+	<img src="{{ asset('bundles/zawidawieinfocore/images/rss.png') }}" style="float:left;border:none;margin-left:0" />Czytaj aktualności przez RSS</a>
+    </h2>
+    {% render 'ZawidawieInfoCoreBundle:News:latest' with {'news_to_ommit': news.id} %}
+    <br class="clear"/>
+    {% render 'ZawidawieInfoCoreBundle:Article:latest' %}
+    <br class="clear"/>
+    <script type="text/javascript" id="AdTaily_Widget"
+            src="http://static.adtaily.pl/widget.js#ByDO7FaA3Ksbl1g"></script>
+    <noscript><a href="http://www.adtaily.pl">Prosta i tania reklama w Internecie sprzedawana za pomocą AdTaily</a>(PLALLADTAILY0002)
+    </noscript>
+    <br class="clear"/>
+  </div>
+</div>
+
+{% endblock %}

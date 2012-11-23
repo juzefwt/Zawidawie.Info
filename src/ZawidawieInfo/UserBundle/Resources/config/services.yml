@@ -1,0 +1,6 @@
+services:
+    zawidawie_user.registration.form.type:
+        class: ZawidawieInfo\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: zawidawie_user_registration }

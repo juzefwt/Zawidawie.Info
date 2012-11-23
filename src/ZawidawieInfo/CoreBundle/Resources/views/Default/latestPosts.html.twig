@@ -1,0 +1,20 @@
+<h3>Forum</h3>
+<ul class="forum-list">
+	{% for post in latestPosts %}
+	<li>
+            <a class="anchor" href="{{ forum_urlForPost(post) }}">{{ post.message|strip_bbcode|truncate(50) }}</a>
+	    <span>{{ post.topic.subject }}
+            {% if post.author %}
+                <em>&nbsp;~<a href="{{ path('fos_user_profile_show', {'username': post.author.username }) }}">{{ post.author.username }}</a>, {{ forum_timeInWords(post.createdAt|date('U')) }}</em>
+            {% else %}
+                <em>&nbsp;~{{ post.authorName|default("anonim") }}, {{ post.createdAt|date('d.m, H:i') }}</em>
+            {% endif %}
+            {% if is_granted('ROLE_SUPER_ADMIN') and post.number != 1 %}
+                <a class="delete" href="{{ path('herzult_forum_post_delete', { "id": post.id }) }}">Delete</a>
+            {% endif %}
+	    </span>
+	</li>
+	{% endfor %}
+</ul>
+<p class="next"><?php echo link_to('przejdź na forum', '@herzult_forum_home') ?></p>
+<br class="clear"/>

@@ -1,0 +1,190 @@
+homepage:
+   pattern:  /
+   defaults: { _controller: ZawidawieInfoCoreBundle:Default:homepage }
+
+news_index:
+   pattern:  /newsy
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:index }
+
+news_index_compat:
+   pattern:  /aktualnosci.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:index }
+
+news_new:
+   pattern:  /news/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:new }
+
+news_upload:
+   pattern:  /news/upload
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:upload }
+
+news_edit:
+   pattern:  /news/edytuj/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:edit }
+
+news_delete:
+   pattern:  /news/usun/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:delete }
+
+news_tag:
+   pattern:  /news/tag/{tag}
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:indexTag }
+
+news_show:
+   pattern:  /news/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:show }
+
+news_show_compat:
+   pattern:  /art/{slug}.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:News:show }
+
+article_index:
+   pattern:  /artykuly
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:index }
+
+article_index_compat:
+   pattern:  /artykuly.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:index }
+
+article_show:
+   pattern:  /artykuly/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:show }
+
+article_show_compat:
+   pattern:  /str/{slug}.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:show }
+
+article_new:
+   pattern:  /artykul/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:new }
+
+article_edit:
+   pattern:  /artykul/edytuj/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:edit }
+
+article_delete:
+   pattern:  /artykul/usun/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:delete }
+
+static_show:
+   pattern:  /strona/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Static:show }
+
+ads_index:
+   pattern:  /ogloszenia
+   defaults: { _controller: ZawidawieInfoCoreBundle:Ad:index }
+
+ads_new:
+   pattern:  /ogloszenie/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:Ad:new }
+
+ads_show:
+  pattern:  /ogloszenie/{id}
+  defaults: { _controller: ZawidawieInfoCoreBundle:Ad:show }
+
+catalog_index:
+   pattern:  /firmy_i_uslugi
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:index }
+
+catalog_new:
+   pattern:  /firmy_i_uslugi/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:new }
+
+catalog_edit:
+   pattern:  /firmy_i_uslugi/edytuj/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:edit }
+
+catalog_show:
+   pattern:  /firmy_i_uslugi/profil/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:show }
+
+catalog_list:
+   pattern:  /firmy_i_uslugi/{query}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:list }
+
+catalog_delete:
+   pattern:  /firma/usun/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:delete }
+
+photo_new:
+   pattern:  /foto/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:Photo:new }
+
+photo_tag:
+   pattern:  /foto/tag/{tag}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Photo:index }
+
+photo_edit:
+   pattern:  /foto/edytuj/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Photo:edit }
+
+photo_delete:
+   pattern:  /foto/usun/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Photo:delete }
+
+photo_show:
+   pattern:  /foto/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Photo:show }
+
+manage_content:
+   pattern:  /moje
+   defaults: { _controller: ZawidawieInfoCoreBundle:Default:dashboard }
+
+item_index:
+   pattern:  /obiekty
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:index }
+
+investments:
+   pattern:  /inwestycje
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:investments }
+
+districts:
+   pattern:  /osiedla
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:districts }
+
+events:
+   pattern:  /wydarzenia
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:events }
+
+item_new:
+   pattern:  /obiekt/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:new }
+
+item_edit:
+   pattern:  /obiekt/edytuj/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:edit }
+
+item_delete:
+   pattern:  /obiekt/usun/{id}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:delete }
+
+item_show:
+   pattern:  /obiekt/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Item:show }
+
+item_attach_new:
+   pattern:  /zalacznik/dodaj
+   defaults: { _controller: ZawidawieInfoCoreBundle:ItemAttachment:new }
+
+# previously used routes left for BC & SEO stuff
+
+catalog_index_old:
+   pattern:  /firmy
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:index }
+
+catalog_index_compat:
+   pattern:  /katalog.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:index }
+
+catalog_category_old:
+   pattern:  /firmy/{query}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:list }
+
+catalog_category_compat:
+   pattern:  /katalog/{query}.html
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:list }
+
+catalog_show_old:
+   pattern:  /firma/{slug}
+   defaults: { _controller: ZawidawieInfoCoreBundle:Catalog:show }
+

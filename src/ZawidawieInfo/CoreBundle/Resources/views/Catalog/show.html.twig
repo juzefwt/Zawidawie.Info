@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ item.name }} - Zawidawie.info{% endblock %}
+{% block description %}{{ item.description|striptags }}{% endblock %}
+
+{% block body %}
+
+{{ vichgeo_include_js() }}
+{{ vichgeo_include_css() }}
+
+<div id="container-full">
+    <div class="content">
+        <p><a href="{{ path('catalog_index') }}">Firmy i Usługi</a>
+        </p>
+
+        <h1>{{ item.name }}</h1>
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <p><a href="{{ path('catalog_edit', { 'id': item.id }) }}">Edytuj</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path('catalog_delete', { 'id': item.id }) }}">Usuń</a></p>
+        {% endif %}
+
+        <div id="company_details">
+            {% if item.latitude > 0 %}
+            {{ vichgeo_map_for('location', item) }}
+            {% endif %}
+
+            <table class="form">
+                <tbody>
+                {% if item.address %}
+                <tr>
+                    <th>Adres:</th>
+                    <td>{{ item.address }}</td>
+                </tr>
+                {% endif %}
+                {% if item.tel %}
+                <tr>
+                    <th>Telefon:</th>
+                    <td>{{ item.tel }}</td>
+                </tr>
+                {% endif %}
+                {% if item.mail %}
+                <tr>
+                    <th>Adres e-mail:</th>
+                    <td><a href="mailto:{{ item.mail }}">{{ item.mail }}</a></td>
+                </tr>
+                {% endif %}
+                {% if item.www %}
+                <tr>
+                    <th>Strona WWW:</th>
+                    <td><a href="{{ item.www }}">{{ item.www }}</a></td>
+                </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        {{ item.description|html_entity_decode }}
+
+        <br class="clear"/>
+    </div>
+</div>
+
+{% endblock %}

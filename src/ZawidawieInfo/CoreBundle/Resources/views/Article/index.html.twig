@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Artykuły - Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container">
+      <div class="content">
+	<h1>Aktualności</h1><br/>
+
+	{% for n in article %}
+	  <br class="clear" />
+	  {% include 'ZawidawieInfoCoreBundle:Article:article.html.twig' with {'article': n} %}
+	  <br class="clear" />
+	{% endfor %}
+
+	{% include 'ZawidawieInfoCoreBundle:Default:pager.html.twig' with {'pager': article} %}
+
+	<br class="clear"/>
+      </div>
+</div>
+
+<div id="sidebar">
+      <div class="content">
+      </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Moje treści - Zawidawie.info{% endblock %}
+
+{% block body %}
+<div id="container-full">
+      <div class="content">
+	<h1>Panel użytkownika</h1>
+	<p>Stąd możesz dodawać treści w serwisie i zarządzać swoim kontem.</p>
+	<table class="announce-shorts" style="width: 100%;">
+	  <tr>
+	    <td>
+	      <h2>Nowe treści</h2>
+	      <br />
+	      <ul>
+		<li><a href="{{ path('news_new') }}">Dodaj newsa</a></li>
+		<li><a href="{{ path('article_new') }}">Dodaj artykuł</a></li>
+		<li><a href="{{ path('photo_new') }}">Dodaj zdjęcie</a></li>
+	    </ul>
+	    </td>
+	    <td>
+	      <h2>Twoje publikacje</h2>
+	      <br />
+	      <ul>
+		<li><a href="#">Newsy</a></li>
+		<li><a href="#">Artykuły</a></li>
+		<li><a href="#">Zdjęcia</a><li>
+	      </ul>
+	    </td>
+	    <td>
+	      <h2>Zarządzanie kontem</h2>
+	      <br />
+	      <ul>
+		<li><a href="{{ path('fos_user_change_password') }}">Zmiana hasła</a><li>
+	      </ul>
+	    </td>
+	  </tr>
+	</table>
+	<br class="clear"/>
+      </div>
+</div>
+{% endblock %}

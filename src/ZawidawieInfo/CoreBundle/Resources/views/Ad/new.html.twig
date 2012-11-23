@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Zawidawie.info{% endblock %}
+
+{% block body %}
+
+<div id="container-full">
+    <div class="content">
+        <p><a href="{{ path('ads_index') }}">Ogłoszenia</a></p>
+
+        <h1>Dodaj ogłoszenie</h1>
+
+        <form action="{{ action == 'ads_edit' ? path(action, {'id': ad.id}) : path(action) }}" id="ad_form"
+              method="post" {{ form_enctype(form) }}>
+            <table class="form">
+                <tr>
+                    <th><label for="AdType_title">Tytuł</label></th>
+                    <td>{{ form_widget(form.title) }}</td>
+                </tr>
+                <tr>
+                    <th><label for="AdType_content">Treść</label></th>
+                    <td>
+                        {{ form_widget(form.content, {"attr": {"class": "wysiwyg_editor"}}) }}
+                    </td>
+                </tr>
+                {{ form_rest(form) }}
+                <tr>
+                    <th></th>
+                    <td><input type="submit" class="submit" value="Zapisz"/></td>
+                </tr>
+            </table>
+        </form>
+
+        <br class="clear"/>
+    </div>
+</div>
+
+{% render "IHQSWysiwygBundle:Script:init" %}
+        {% endblock %}
