@@ -13,8 +13,6 @@
   {% javascripts
        '@ZawidawieInfoCoreBundle/Resources/public/js/*'
        '@ZawidawieInfoCoreBundle/Resources/public/js/vendor/jquery.showpassword.js'
-       '@IHQSWysiwygBundle/Resources/public/js/wysiwyg.js'
-       '@ZawidawieInfoWysiwygBundle/Resources/public/js/wysiwyg/ckeditor.js'
        '@FOSCommentBundle/Resources/assets/js/*'
        filter='?yui_js' %}
   <script src="{{ asset_url }}"></script>
@@ -44,8 +42,8 @@
 	      </a>]</p>
 	  {% else %}
 	  <p id="user-login">Witaj, <strong>Nieznajomy</strong>! <a href="{{ path('fos_user_security_login') }}">Zaloguj się</a> lub <a href="{{ path('fos_user_registration_register') }}">załóż konto</a>.
-	  <a href="{{ path('MachSavelBundle_connect', {'service': 'Google'}) }}"><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px" alt="google" title="Zaloguj się kontem Google" /></a>
-	  <a href="{{ path('MachSavelBundle_connect', {'service': 'Facebook'}) }}"><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px" alt="facebook" title="Zaloguj się kontem Facebook" /></a>
+	  <a href="{# path('MachSavelBundle_connect', {'service': 'Google'}) #}"><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px" alt="google" title="Zaloguj się kontem Google" /></a>
+	  <a href="{# path('MachSavelBundle_connect', {'service': 'Facebook'}) #}"><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px" alt="facebook" title="Zaloguj się kontem Facebook" /></a>
 	  </p>
 
 	  {% endif %}

@@ -2,6 +2,8 @@
 
 namespace ZawidawieInfo\CoreBundle\Twig;
 
+use ZawidawieInfo\CoreBundle\Util\BBCode\BbCode;
+
 /**
  *
  * @author Wojciech Treter <juzefwt@gmail.com>
@@ -41,7 +43,7 @@ class CommonExtension extends \Twig_Extension
 
     public function parseBbcode($value)
     {
-        $bbcode = new \BbCode();
+        $bbcode = new BbCode();
         $bbcode->getSettings()->trustText = true;
         return $bbcode->parse($value);
     }

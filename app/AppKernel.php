@@ -22,7 +22,7 @@ class AppKernel extends Kernel
             new ZawidawieInfo\UserBundle\ZawidawieInfoUserBundle(),
             new ZawidawieInfo\CoreBundle\ZawidawieInfoCoreBundle(),
             new ZawidawieInfo\PagerBundle\ZawidawieInfoPagerBundle(),
-            new ZawidawieInfo\CommentBundle\ZawidawieInfoCommentBundle(),
+//             new ZawidawieInfo\CommentBundle\ZawidawieInfoCommentBundle(),
             new ZawidawieInfo\ForumBundle\ZawidawieInfoForumBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Herzult\Bundle\ForumBundle\HerzultForumBundle(),
@@ -43,7 +43,6 @@ class AppKernel extends Kernel
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();

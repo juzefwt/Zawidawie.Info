@@ -145,3 +145,41 @@ nekland_feed:
             language:    'pl'
             filename:    "aktualnosci.|format|"
 
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }
+    common.twig.extension:
+        class: ZawidawieInfo\CoreBundle\Twig\CommonExtension
+        tags:
+            - { name: twig.extension }
+    sonata.admin.news:
+        class: ZawidawieInfo\CoreBundle\Admin\NewsAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Newsy }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\News, SonataAdminBundle:CRUD]
+    sonata.admin.item:
+        class: ZawidawieInfo\CoreBundle\Admin\ItemAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Obiekty }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\Item, SonataAdminBundle:CRUD]
+    sonata.admin.catalog:
+        class: ZawidawieInfo\CoreBundle\Admin\CatalogItemAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Firmy }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\CatalogItem, SonataAdminBundle:CRUD]
+    sonata.admin.news_photo:
+        class: ZawidawieInfo\CoreBundle\Admin\NewsPhotoAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Foty do newsów }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\NewsPhotoReference, SonataAdminBundle:CRUD]
+    sonata.admin.news_article:
+        class: ZawidawieInfo\CoreBundle\Admin\ArticlePhotoAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Foty do artykułów }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference, SonataAdminBundle:CRUD]
+    pagerfanta.view.custom:
+        class: ZawidawieInfo\PagerBundle\View\CustomView
+        public: false
+        tags: [{ name: pagerfanta.view, alias: custom }]

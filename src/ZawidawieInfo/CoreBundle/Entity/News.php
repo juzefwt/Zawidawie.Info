@@ -7,19 +7,18 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Validator\Constraints as Assert;
 use DoctrineExtensions\Taggable\Taggable;
 use Doctrine\Common\Collections\ArrayCollection;
-use Nekland\FeedBundle\Item\ItemInterface;
 
 /**
  * @ORM\Entity(repositoryClass="ZawidawieInfo\CoreBundle\Model\Repository\NewsRepository")
  * @ORM\HasLifecycleCallbacks
  * @ORM\Table(name="news")
  */
-class News implements Taggable, ItemInterface
+class News implements Taggable, \Nekland\Bundle\FeedBundle\Item\ItemInterface
 {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
-     * @ORM\generatedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

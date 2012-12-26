@@ -2,7 +2,7 @@ parameters:
     database_driver:   pdo_mysql
     database_host:     localhost
     database_port:     ~
-    database_name:     zawidawie2
+    database_name:     zawidawie
     database_user:     root
     database_password: PLUGQ91I
 

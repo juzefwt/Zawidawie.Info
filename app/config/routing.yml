@@ -1,4 +1,61 @@
-# Internal routing configuration to handle ESI
-#_internal:
-#    resource: "@FrameworkBundle/Resources/config/routing/internal.xml"
-#    prefix:   /_internal
+core:
+    resource: "@ZawidawieInfoCoreBundle/Resources/config/routing.yml"
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_reg:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /user
+
+fos_user_reg:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /user
+
+fos_user_reset:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /user
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+
+fos_user_change:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+
+_imagine:
+    resource: .
+    type:     imagine
+
+herzult_forum:
+    resource: @ZawidawieInfoForumBundle/Resources/config/routing.yml
+    prefix: /forum
+
+herzult_forum_index_compat:
+    pattern: /forum.html
+    defaults: { _controller: ZawidawieInfoForumBundle:Forum:index }
+
+herzult_forum_category:
+    resource: @HerzultForumBundle/Resources/config/routing/category.xml
+    prefix: /forum
+herzult_forum_topic:
+    resource: @HerzultForumBundle/Resources/config/routing/topic.xml
+    prefix: /forum
+herzult_forum_post:
+    resource: @HerzultForumBundle/Resources/config/routing/post.xml
+    prefix: /forum
+
+#fos_comment:
+#    resource: "@FOSCommentBundle/Resources/config/routing.yml"
+
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix: /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
+# MachSavelBundle:
+#     resource: "@MachSavelBundle/Resources/config/routing.yml"
+#     prefix:   /
