@@ -5,7 +5,7 @@ namespace ZawidawieInfo\CoreBundle\Listener;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Events;
 use Nekland\Bundle\FeedBundle\Factory\FeedFactory;
-use ZawidawieInfo\CoreBundle\Entity\News;
+use ZawidawieInfo\CoreBundle\Entity\Article;
 
 class NewsRssUpdater
 {
@@ -26,10 +26,10 @@ class NewsRssUpdater
         $entity = $args->getEntity();
         $entityManager = $args->getEntityManager();
 
-        if ($entity instanceof News) {
+        if ($entity instanceof Article) {
 	    try {
-		$this->feed_factory->load('news', 'rss_file');
-		$feed = $this->feed_factory->get('news');
+		$this->feed_factory->load('article', 'rss_file');
+		$feed = $this->feed_factory->get('article');
 
 		try {
 		    $feed->replace($entity->getId(), $entity);
@@ -37,7 +37,7 @@ class NewsRssUpdater
 		    $feed->add($entity);
 		}
 
-		$this->feed_factory->render('news', 'rss');
+		$this->feed_factory->render('article', 'rss');
 	    } catch (\Exception $e) {
 		//czasami tu był wysyp z powodu uciętych w pół znaków unicode'u
 	    }

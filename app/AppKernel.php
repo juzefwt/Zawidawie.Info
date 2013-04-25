@@ -39,7 +39,8 @@ class AppKernel extends Kernel
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
 //             new Mach\SavelBundle\MachSavelBundle(),
             new Nekland\Bundle\FeedBundle\NeklandFeedBundle(),
-
+	    new Sonata\BlockBundle\SonataBlockBundle(),
+// 	    new Sonata\CacheBundle\SonataCacheBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

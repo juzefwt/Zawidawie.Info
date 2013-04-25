@@ -636,7 +636,7 @@ form.sf_comment_form div {
 }
 
 form.sf_comment_form div label {
-    float: left;
+    float: right;
     padding: 4px 0;
     display: block;
 }
@@ -1128,6 +1128,8 @@ table.form td a.noimp {
 }
 
 .form input[type="text"],
+.form input[type="password"],
+.form input[type="email"],
 .form textarea {
     background: #fff;
     border: solid 1px #C2CDC1;
@@ -1161,6 +1163,11 @@ table.form td textarea {
 .form input[type="checkbox"] {
     width: 15px;
     padding: 0;
+}
+
+.form th label {
+
+    float: right;
 }
 
 input.submit,

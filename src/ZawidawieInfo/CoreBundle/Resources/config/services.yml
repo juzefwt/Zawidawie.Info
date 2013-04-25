@@ -1,35 +1,4 @@
 services:
-    zawidawie_core.news.controller:
-        class: ZawidawieInfo\CoreBundle\Controller\NewsController
-        calls:
-            -      [ setContainer, ["@service_container"] ]
-        tags:
-            -      { name: security.secure_service }
-
-    zawidawie_core.ad.controller:
-        class: ZawidawieInfo\CoreBundle\Controller\AdController
-        calls:
-            -      [ setContainer, ["@service_container"] ]
-        tags:
-            -      { name: security.secure_service }
-
-    zawidawie_core.news.form:
-        class: Symfony\Component\Form\Form
-        factory_service: form.factory
-        factory_method: create
-        arguments:
-            -      @zawidawie_core.news.form.type
-
-    zawidawie_core.news.form.type:
-        class: ZawidawieInfo\CoreBundle\Form\NewsType
-
-    zawidawie_core.news.form.handler:
-        class: ZawidawieInfo\CoreBundle\Form\Handler\NewsFormHandler
-        scope: request
-        arguments:
-            -      @zawidawie_core.news.form
-            -      @request
-            -      @service_container
 
     zawidawie_core.news.listener:
         class: ZawidawieInfo\CoreBundle\Listener\NewsRssUpdater

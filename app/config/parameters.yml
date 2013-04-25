@@ -13,3 +13,5 @@ parameters:
 
     locale:            pl
     secret:            dca2dd059377c0e310ef42d4458f1077a5
+
+    security.encoder.digest.class: ZawidawieInfo\UserBundle\Security\MessageDigestPasswordEncoder

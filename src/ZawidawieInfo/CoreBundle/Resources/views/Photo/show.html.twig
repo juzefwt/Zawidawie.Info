@@ -17,7 +17,6 @@
 
     <p style="text-align:left">{{ photo.description|bbcode }}</p>
 
-    {% render "FOSCommentBundle:Thread:show" with {"id": photo.id} %}
     <br class="clear"/>
 
   </div>
@@ -42,11 +41,6 @@
     <p>{{ photo.item.typeName }}: <a href="{{ path('item_show', {'slug': photo.item.slug}) }}">{{ photo.item.name }}</a>
     </p>
     {% endif %}
-    {% if photo.hasRelatedNews %}
-    {% for news in photo.relatedNews %}
-    <p>News: <a href="{{ path('news_show', {'slug': news.slug}) }}">{{ news.title }}</a></p>
-    {% endfor %}
-    {% endif %}
 
       {% if photo.hasRelatedArticles %}
       {% for article in photo.relatedArticles %}
@@ -59,14 +53,6 @@
     <a href="{{ path('photo_edit', { 'id': photo.id }) }}" class="btn2">Edytuj</a>&nbsp;&nbsp;<a
       href="{{ path('photo_delete', { 'id': photo.id }) }}" class="btn3">Usuń</a>
     {% endif %}
-    <br class="clear"/>
-    <br class="clear"/>
-    <br class="clear"/>
-    <script type="text/javascript" id="AdTaily_Widget"
-            src="http://static.adtaily.pl/widget.js#ByDO7FaA3Ksbl1g"></script>
-    <noscript><a href="http://www.adtaily.pl">Prosta i tania reklama w Internecie sprzedawana za pomocą AdTaily</a>(PLALLADTAILY0002)
-    </noscript>
-    <br/>
     <br class="clear"/>
 
   </div>

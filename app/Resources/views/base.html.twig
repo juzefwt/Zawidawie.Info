@@ -27,12 +27,20 @@
   <link rel="alternate" type="application/rss+xml" title="Zawidawie.info - Aktualności" href="http://zawidawie.info/feeds/aktualnosci.rss" />
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/pl_PL/all.js#xfbml=1&appId=232235723543770";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div id="fixwidth">
   
   <div id="header">
   	<h1><a href="{{ path('homepage') }}">zawidawie.info</a></h1>
   	<h2>Lokalny portal informacyjny</h2>
-	<a href="http://www.facebook.com/pages/Zawidawieinfo/278326342186882" class="fb_link" target="_blank">Zobacz Zawidawie.Info na Facebooku&nbsp;&raquo;</a>
+	<a href="http://www.facebook.com/pages/Zawidawieinfo/278326342186882" class="fb_link" target="_blank">Zawidawie.Info na Facebooku&nbsp;&raquo;</a>
 
 	  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 	  <p id="user-login">Witaj, <b><a href="{{ path('fos_user_profile_show', {'username': app.user.username}) }}">
@@ -42,9 +50,9 @@
 	      </a>]</p>
 	  {% else %}
 	  <p id="user-login">Witaj, <strong>Nieznajomy</strong>! <a href="{{ path('fos_user_security_login') }}">Zaloguj się</a> lub <a href="{{ path('fos_user_registration_register') }}">załóż konto</a>.
-	  <a href="{# path('MachSavelBundle_connect', {'service': 'Google'}) #}"><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px" alt="google" title="Zaloguj się kontem Google" /></a>
+<!--	  <a href="{# path('MachSavelBundle_connect', {'service': 'Google'}) #}"><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px" alt="google" title="Zaloguj się kontem Google" /></a>
 	  <a href="{# path('MachSavelBundle_connect', {'service': 'Facebook'}) #}"><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px" alt="facebook" title="Zaloguj się kontem Facebook" /></a>
-	  </p>
+	-->  </p>
 
 	  {% endif %}
 
@@ -58,8 +66,7 @@
 	  <li><a href="{{ url('events') }}">Wydarzenia</a></li>
 	  <li><a href="{{ url('districts') }}">Osiedla</a></li>
 	  <li><a href="{{ url('catalog_index') }}">Firmy i Usługi</a></li>
-	  <li><a href="{{ url('ads_index') }}">Ogłoszenia</a></li>
-	  <li><a href="{{ path('static_show', {'slug' : 'onas'}) }}" title="Informacje na temat strony">O wortalu</a></li>
+	  <li><a href="{{ path('static_show', {'slug' : 'onas'}) }}" title="Informacje na temat strony">O stronie</a></li>
           {% if is_granted("ROLE_SUPER_ADMIN") %}
           <li><a href="{{ path('sonata_admin_dashboard') }}" title="Admin">Admin</a></li>
           {% endif %}

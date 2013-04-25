@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use ZawidawieInfo\CoreBundle\Entity\Photo;
 use ZawidawieInfo\CoreBundle\Form\EventListener\AddFileFieldSubscriber;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PhotoType extends AbstractType
 {
@@ -21,6 +22,13 @@ class PhotoType extends AbstractType
 
         $subscriber = new AddFileFieldSubscriber($builder->getFormFactory());
         $builder->addEventSubscriber($subscriber);
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'ZawidawieInfo\CoreBundle\Entity\Photo',
+        ));
     }
 
     public function getName()

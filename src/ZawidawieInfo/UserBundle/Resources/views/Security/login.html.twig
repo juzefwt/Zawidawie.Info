@@ -2,72 +2,52 @@
 
 {% block body %}
 
-  <div id="container-full">
-  	<div class="content">
-          <h1>Logowanie</h1>
+<div id="container-full">
+    <div class="content">
+      <h1>Logowanie</h1>
 
-  		<table class="user">
-  		<tr>
-  		<td width="40%">
-			<form action="{{ path("fos_user_security_check") }}" method="post">
-				<table class="form">
-					{% if error %}					
-					<tr>
-						<td colspan="2"><div class="alert"><center><p style="color:red">{{ error }}</p></center></div></td>
-					</tr>
-					{% endif %}
+      <table class="user">
+      <tr>
+          <td>
+              <form action="{{ path("fos_user_security_check") }}" method="post">
+                  <table class="form" style="width: 70%">
+                          {% if error %}
+                          <tr>
+                                  <td colspan="2"><div class="alert"><center><p style="color:red">{{ error|trans }}</p></center></div></td>
+                          </tr>
+                          {% endif %}
+                          <tr>
+                                  <th style="width:40%"><label for="username">Login:</label></th>
+                                  <td>
+                                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                                  </td>
+                          </tr>
+                          <tr>
+                                  <th style="width:40%"><label for="password">Hasło:</label></th>
+                                  <td>
+                                    <input type="password" id="password" name="_password" />
+                                  </td>
+                          </tr>
+                          <tr>
+                                  <th></th>
+                                  <td>
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                                    <label for="remember_me">Pozostań zalogowany</label>
+                                  </td>
+                          </tr>
+                          <tr>
+                                  <th></th>
+                                  <td><input type="submit" value="Zaloguj się" class="submit" /><br /><br />
+                                    <a href="{{ path('fos_user_resetting_request') }}">Zapomniałem hasła</a></td>
+                          </tr>
+                      </table>
+              </form>
+          </td>
+      </tr>
+      </table>
 
-					<tr>
-						<th><label for="username">Login:</label></th>
-						<td>
-						  <input type="text" id="username" name="_username" value="{{ last_username }}" />
-						</td>
-					</tr>
-					<tr>
-						<th><label for="password">Hasło:</label></th>
-						<td>
-						  <input type="password" id="password" name="_password" />
-						</td>
-					</tr>
-					<tr>
-                        <th></th>
-						<td>
-						  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-						  <label for="remember_me">Pozostań zalogowany</label>
-						</td>
-					</tr>
-					<tr>
-                        <th></th>
-						<td><input type="submit" value="Zaloguj się" class="submit" /><br /><br />
-						  <a href="{{ path('fos_user_resetting_request') }}">Zapomniałem hasła</a></td>
-					</tr>
-					<tr>
-						<td colspan="2">
-						    <p><img src="{{ asset('bundles/zawidawieinfocore/images/facebook.png') }}" style="width:24px;border:none;margin:0;float:left" alt="facebook" title="Zaloguj się kontem FB" /><a href="{{ path('MachSavelBundle_connect', {'service': 'Facebook'}) }}" style="display:block;float:left;margin-top:5px">Zaloguj się przez konto FB</a></p>
-						    <br class="clear" />
-						    <p><img src="{{ asset('bundles/zawidawieinfocore/images/google.png') }}" style="width:24px;border:none;margin:0;float:left" alt="google" title="Zaloguj się kontem Google" /><a href="{{ path('MachSavelBundle_connect', {'service': 'Google'}) }}" style="display:block;float:left;margin-top:5px">Zaloguj się przez konto Google</a></p>
-						    <br class="clear" />
-						    <p><a href="{{ path('fos_user_registration_register') }}">Stwórz nowe konto</a></p>
-						</td>
-					</tr>
-				</table>
-			</form>
-  		</td>
-  		<td width="60%">
-  			<h3><a href="http://www.zawidawie.info/str/podreczna-instrukcja-obslugi.html">I Ty tworzysz historię. Podziel się nią!</a></h3>
-			<p>Posiadasz stare czy współcześniejsze zdjęcia, dokumenty, wspomnienia związane z Twoim osiedlem? Daj innym możliwość poznania lokalnej historii - opublikuj je na Zawidawie.Info! <a href="http://www.zawidawie.info/str/podreczna-instrukcja-obslugi.html">Dowiedz się więcej &raquo;</a></p>
-  			<br class="clear"/>
-  			<h3>Rejestracja konta użytkownika</h3>
-			<p>Rejestracja daje Ci możliwość bycia aktywnym członkiem społeczności internetowej naszego osiedla. Zakładając konto zyskujesz możliwość komentowania bieżących wydarzeń, prowadzenia dyskusji na forum oraz współtworzenia wortalu przez dodawanie własnych informacji, zdjęć i innych treści. Nie wspominając o prestiżu... <br /> 
-			<a href="{{ path('fos_user_registration_register') }}">Nie zwlekaj, zarejestruj się już teraz! &raquo; </a></p>
-			<br class="clear"/>
-			<h4>Korzystanie z serwisu oznacza akceptację jego <a href="http://www.zawidawie.info/strona/regulamin.html">regulaminu</a></h4>
-  		</td>
-  		</tr>
-  		</table>
-  		
-  		<br class="clear"/>
-  	</div>
-  </div>
+      <br class="clear"/>
+    </div>
+</div>
 
 {% endblock body %}

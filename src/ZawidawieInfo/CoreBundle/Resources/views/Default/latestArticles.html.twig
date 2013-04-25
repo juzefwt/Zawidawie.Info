@@ -1,19 +1,24 @@
-<div id="article-container">
-	<div id="article-stripe">
-		{% if mainArticle.hasPhoto %}
-			<a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">	
-				<img src="{{ ('uploads/photos/' ~ mainArticle.leadingPhoto.path)|apply_filter('article_stripe') }}"
-				    title="{{ mainArticle.leadingPhoto.title }}"/>
-			</a>
-		{% endif %}
-		<div class="text">
-			<h1><a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.title }}</a></h1>
-			<p><a href="{{ path('article_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.content|striptags|truncate(80)|html_entity_decode }}<span class="more">&nbsp;czytaj dalej&nbsp;&raquo;</span></a></p>
-		</div>
-	</div>
-	
-	{% for article in latestArticles %}
-		<h2><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>
-	{% endfor %}
-	<p class="next"><a href="{{ path('article_index') }}">pozostałe artykuły&nbsp;&raquo;</a></p>
+<div id="news-container">
+        <div id="news-stripe">
+                {% if mainArticle.hasPhoto %}
+                        <a href="{{ path('news_show', { 'slug': mainArticle.slug }) }}">
+                                <img src="{{ ('uploads/photos/' ~ mainArticle.leadingPhoto.path)|apply_filter('news_stripe') }}"
+                                    title="{{ mainArticle.leadingPhoto.title }}"/>
+                        </a>
+                {% endif %}
+                <div class="text">
+                        <h1><a href="{{ path('news_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.title }}</a></h1>
+                        <p><a href="{{ path('news_show', { 'slug': mainArticle.slug }) }}">{{ mainArticle.content|striptags|truncate(160)|html_entity_decode }}<span class="more">&nbsp;czytaj dalej&nbsp;&raquo;</span></a></p>
+                </div>
+        </div>
+
+        {% for article in latestArticles %}
+                {% if article.hasPhoto %}
+                <img src="{{ ('uploads/photos/' ~ article.leadingPhoto.path)|apply_filter('thumbnail') }}"
+                                    title="{{ article.leadingPhoto.title }}" style="float:left;margin:3px"/>
+                {% endif %}
+                <h2><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>
+                <p>{{ article.content|striptags|truncate(150)|html_entity_decode }}</p>
+        {% endfor %}
+        <p class="next"><a href="{{ path('news_index') }}">pozostałe aktualności&nbsp;&raquo;</a></p>
 </div>

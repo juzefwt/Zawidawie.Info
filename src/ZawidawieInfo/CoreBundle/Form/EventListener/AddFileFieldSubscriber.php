@@ -39,7 +39,7 @@ class AddFileFieldSubscriber implements EventSubscriberInterface
 
         // check if the product object is "new"
         if (!$data->getId()) {
-            $form->add($this->factory->createNamed('file', 'file', array('required' => true)));
+            $form->add('file', 'file', array('required' => true));
         }
     }
 }

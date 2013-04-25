@@ -14,6 +14,7 @@ namespace ZawidawieInfo\ForumBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PostFormType extends AbstractType
 {
@@ -27,18 +28,14 @@ class PostFormType extends AbstractType
     {
         $builder->add('id', 'hidden');
         $builder->add('message', 'textarea');
-/*
-        if (!$this->securityContext->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-            $builder->add('authorName', 'text');
-        }*/
     }
 
-	public function getDefaultOptions(array $options)
-	{
-		return array(
-			'data_class' => 'ZawidawieInfo\ForumBundle\Entity\ForumPost',
-		);
-	}
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'ZawidawieInfo\ForumBundle\Entity\ForumPost',
+        ));
+    }
 
     public function getName()
     {

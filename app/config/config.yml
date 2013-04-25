@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -64,8 +64,6 @@ fos_user:
     firewall_name: main
     use_listener: true
     user_class: ZawidawieInfo\CoreBundle\Entity\User
-#     encoder:
-#         algorithm: sha1
     registration:
         form:
             type: zawidawie_user_registration
@@ -137,8 +135,8 @@ fpn_tag:
 
 nekland_feed:
     feeds:
-        news:
-            class:        ZawidawieInfo\CoreBundle\Entity\News
+        articles:
+            class:        ZawidawieInfo\CoreBundle\Entity\Article
             title:       'Aktualności z serwisu Zawidawie.info'
             description: 'Najważniejsze wiadomości z Psiego Pola i okolic'
             url:         'homepage'
@@ -154,11 +152,6 @@ services:
         class: ZawidawieInfo\CoreBundle\Twig\CommonExtension
         tags:
             - { name: twig.extension }
-    sonata.admin.news:
-        class: ZawidawieInfo\CoreBundle\Admin\NewsAdmin
-        tags:
-          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Newsy }
-        arguments: [null, ZawidawieInfo\CoreBundle\Entity\News, SonataAdminBundle:CRUD]
     sonata.admin.item:
         class: ZawidawieInfo\CoreBundle\Admin\ItemAdmin
         tags:
@@ -169,11 +162,6 @@ services:
         tags:
           - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Firmy }
         arguments: [null, ZawidawieInfo\CoreBundle\Entity\CatalogItem, SonataAdminBundle:CRUD]
-    sonata.admin.news_photo:
-        class: ZawidawieInfo\CoreBundle\Admin\NewsPhotoAdmin
-        tags:
-          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Foty do newsów }
-        arguments: [null, ZawidawieInfo\CoreBundle\Entity\NewsPhotoReference, SonataAdminBundle:CRUD]
     sonata.admin.news_article:
         class: ZawidawieInfo\CoreBundle\Admin\ArticlePhotoAdmin
         tags:
@@ -183,3 +171,13 @@ services:
         class: ZawidawieInfo\PagerBundle\View\CustomView
         public: false
         tags: [{ name: pagerfanta.view, alias: custom }]
+
+sonata_block:
+    default_contexts: [cms]
+#    blocks:
+#        sonata.admin.block.admin_list:
+#            contexts:   [admin]
+#
+#        sonata.block.service.text:
+#        sonata.block.service.action:
+#        sonata.block.service.rss:

@@ -23,7 +23,7 @@ class ArticlePhotoReference
     protected $article;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Photo")
+     * @ORM\ManyToOne(targetEntity="Photo", inversedBy="relatedArticles")
      */
     protected $photo;
 

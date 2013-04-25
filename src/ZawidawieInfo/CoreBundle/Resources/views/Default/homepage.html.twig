@@ -1,24 +1,10 @@
 {% extends '::base.html.twig' %}
 
-{% block newsticker %}
-  {% if shortNews %}
-  <div id="newsticker">
-  	<b>PILNE</b>
-  	<ul>
-		{% for news in shortNews %}
-		<li><a href="{{ path('news_show', {'slug': news.slug })}}">{{ news.title }}</a></li>
-		{% endfor %}
-  	</ul>
-  </div>
-  {% endif %}
-
-{% endblock %}
-
 {% block body %}
 
   <div id="container">
   	<div class="content">
-		{% include 'ZawidawieInfoCoreBundle:Default:latestNews.html.twig' with {'mainNews': mainNews, 'latestNews' : latestNews} %}
+		{% include 'ZawidawieInfoCoreBundle:Default:latestArticles.html.twig' with {'mainArticle': mainArticle, 'latestArticles' : latestArticles} %}
 		{% include 'ZawidawieInfoCoreBundle:Default:latestInvestments.html.twig' with {'investments' : investments} %}
 		<h2>Firmy i usługi</h2>
 		{% include 'ZawidawieInfoCoreBundle:Default:catalog.html.twig' with {'keywords': keywords} %}
@@ -27,11 +13,10 @@
   
   <div id="sidebar">
   	<div class="content">
-		{% include 'ZawidawieInfoCoreBundle:Default:latestArticles.html.twig' with {'mainArticle': mainArticle, 'latestArticles' : latestArticles} %}
-		{% include 'ZawidawieInfoCoreBundle:Default:latestPosts.html.twig' with {'latestPosts' : latestPosts} %} 
+		{% include 'ZawidawieInfoCoreBundle:Default:latestPosts.html.twig' with {'latestPosts' : latestPosts} %}
 		{% include 'ZawidawieInfoCoreBundle:Default:latestPhotos.html.twig' with {'latestPhotos' : latestPhotos} %}
-                {% include 'ZawidawieInfoCoreBundle:Default:latestAds.html.twig' with {'latestAds' : latestAds} %}
-
+                <img src="{{ asset('bundles/zawidawieinfocore/images/czysteogrzewanie.png') }}" style="border:none;width:330px;margin:3px" />
+                <div class="fb-like-box" data-href="https://www.facebook.com/zawidawie.info" data-width="350" data-height="500" data-show-faces="true" data-stream="true" data-header="true"></div>
 		<h3>Odwiedź także</h3>
 		<ul class="links">
 			<li><a target="_blank" href="http://www.mkspolar.pl/">Klub sportowy MKS Polar</a></li>
@@ -55,7 +40,6 @@
 			<li><a target="_blank" href="http://www.litewska.net">Forum mieszkańców ul. Litewskiej</a></li>
 		</ul>
   		<br class="clear"/>
-                <h3 style="font-size:14px;font-weight:bold;color:#000"><a href="http://www.jobrapido.pl/?q=wrocław">Wrocław - znajdź pracę z Jobrapido</a></h3>
   	</div>
   </div>
 

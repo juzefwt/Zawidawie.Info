@@ -85,11 +85,6 @@ class Photo implements Taggable
     private $tagsString;
 
     /**
-     * @ORM\ManyToMany(targetEntity="News", mappedBy="relatedPhotos")
-     */
-    protected $relatedNews;
-
-    /**
      * @ORM\OneToMany(targetEntity="ArticlePhotoReference", mappedBy="photo")
      */
     protected $relatedArticles;
@@ -254,7 +249,6 @@ class Photo implements Taggable
 
     public function __construct()
     {
-        $this->news = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -291,44 +285,9 @@ class Photo implements Taggable
         return $this->updated_at;
     }
 
-    /**
-     * Add news
-     *
-     * @param ZawidawieInfo\CoreBundle\Entity\News $news
-     */
-    public function addNews(\ZawidawieInfo\CoreBundle\Entity\News $news)
-    {
-        $this->news[] = $news;
-    }
-
-    /**
-     * Get news
-     *
-     * @return Doctrine\Common\Collections\Collection
-     */
-    public function getNews()
-    {
-        return $this->news;
-    }
-
     public function __toString()
     {
         return $this->getTitle();
-    }
-
-    /**
-     * Get relatedNews
-     *
-     * @return Doctrine\Common\Collections\Collection 
-     */
-    public function getRelatedNews()
-    {
-        return $this->relatedNews;
-    }
-
-    public function hasRelatedNews()
-    {
-        return count($this->relatedNews) > 0;
     }
 
     public function hasRelatedArticles()

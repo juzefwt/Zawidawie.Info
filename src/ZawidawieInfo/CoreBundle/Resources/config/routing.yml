@@ -4,39 +4,39 @@ homepage:
 
 news_index:
    pattern:  /newsy
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:index }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:index }
 
 news_index_compat:
    pattern:  /aktualnosci.html
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:index }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:index }
 
 news_new:
    pattern:  /news/dodaj
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:new }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:new }
 
 news_upload:
    pattern:  /news/upload
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:upload }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:upload }
 
 news_edit:
    pattern:  /news/edytuj/{id}
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:edit }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:edit }
 
 news_delete:
    pattern:  /news/usun/{id}
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:delete }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:delete }
 
 news_tag:
    pattern:  /news/tag/{tag}
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:indexTag }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:indexTag }
 
 news_show:
    pattern:  /news/{slug}
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:show }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:show }
 
 news_show_compat:
    pattern:  /art/{slug}.html
-   defaults: { _controller: ZawidawieInfoCoreBundle:News:show }
+   defaults: { _controller: ZawidawieInfoCoreBundle:Article:show }
 
 article_index:
    pattern:  /artykuly
