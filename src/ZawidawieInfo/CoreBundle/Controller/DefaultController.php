@@ -34,7 +34,7 @@ class DefaultController extends Controller
 	  ->where('a.is_published = ?1')
 	  ->orderBy('a.created_at', 'DESC')
 	  ->setFirstResult(1)
-	  ->setMaxResults(5)
+	  ->setMaxResults(4)
 	  ->setParameter(1, true)
 	  ->getQuery()
 	  ->getResult();

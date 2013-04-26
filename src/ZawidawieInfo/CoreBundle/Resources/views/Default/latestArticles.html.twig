@@ -19,6 +19,7 @@
                 {% endif %}
                 <h2><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>
                 <p>{{ article.content|striptags|truncate(150)|html_entity_decode }}</p>
+                <br class="clear"/>
         {% endfor %}
         <p class="next"><a href="{{ path('news_index') }}">pozostałe aktualności&nbsp;&raquo;</a></p>
 </div>
