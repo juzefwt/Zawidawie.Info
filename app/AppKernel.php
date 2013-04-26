@@ -41,6 +41,7 @@ class AppKernel extends Kernel
             new Nekland\Bundle\FeedBundle\NeklandFeedBundle(),
 	    new Sonata\BlockBundle\SonataBlockBundle(),
 // 	    new Sonata\CacheBundle\SonataCacheBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -37,7 +37,8 @@
         "sonata-project/admin-bundle": "2.2.*@dev",
         "sonata-project/doctrine-orm-admin-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "1.1.x-dev",
-        "nekland/feed-bundle": "dev-master"
+        "nekland/feed-bundle": "dev-master",
+        "egeloen/ckeditor-bundle": "2.*"
     },
     "scripts": {
         "post-install-cmd": [

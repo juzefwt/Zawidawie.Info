@@ -159,6 +159,11 @@ services:
         tags:
           - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Obiekty }
         arguments: [null, ZawidawieInfo\CoreBundle\Entity\Item, SonataAdminBundle:CRUD]
+    sonata.admin.article:
+        class: ZawidawieInfo\CoreBundle\Admin\ArticleAdmin
+        tags:
+          - { name: sonata.admin, manager_type: orm, group: sonata_blog, label: Artykuły }
+        arguments: [null, ZawidawieInfo\CoreBundle\Entity\Article, SonataAdminBundle:CRUD]
     sonata.admin.catalog:
         class: ZawidawieInfo\CoreBundle\Admin\CatalogItemAdmin
         tags:
@@ -176,10 +181,10 @@ services:
 
 sonata_block:
     default_contexts: [cms]
-#    blocks:
-#        sonata.admin.block.admin_list:
-#            contexts:   [admin]
-#
-#        sonata.block.service.text:
-#        sonata.block.service.action:
-#        sonata.block.service.rss:
+    blocks:
+        sonata.admin.block.admin_list:
+            contexts:   [admin]
+
+        sonata.block.service.text:
+        sonata.block.service.action:
+        sonata.block.service.rss:
