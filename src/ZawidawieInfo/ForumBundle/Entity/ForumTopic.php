@@ -56,4 +56,34 @@ class ForumTopic extends BaseTopic
     {
         $this->getFirstPost()->setAuthorName($authorName);
     }
+
+    /**
+     * Get category
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumCategory 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Get firstPost
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumPost 
+     */
+    public function getFirstPost()
+    {
+        return $this->firstPost;
+    }
+
+    /**
+     * Get lastPost
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumPost 
+     */
+    public function getLastPost()
+    {
+        return $this->lastPost;
+    }
 }

@@ -41,23 +41,13 @@
 		  <label for="CatalogItemType_photo">Logo firmy</label><br />
 		      {{ form_widget(form.photo) }}
 		</li>
-		<li><br />
-		    <h2>Usługi</h2>
-		    <p>Aby klienci mogli łatwiej Cię znaleźć, wymień usługi oraz inne słowa kluczowe kojarzące się z firmą.</p>
-		    <p><i>Np. dla kwiaciarni: kwiaty cięte, kwiaty doniczkowe, wiązanki.</i></p>
-		</li>
-		<li>
-		    <ul id="keywords" data-prototype="{{ form_widget(form.keywords.get('prototype')) | e }}">
-			{% for keyword in form.keywords %}
-			    <li>
-			      <table>
-				<tr><td>{{ form_label(keyword.name) }}</td><td>{{ form_widget(keyword.name) }}</td></tr>
-			      </table>
-			    </li>
-			{% endfor %}
-		    </ul>
-		</li>
-		{{ form_widget(form._token) }}
+                <li>
+                  <label for="CatalogItemType_keywords">Usługi</label><br />
+                      {{ form_widget(form.keywords) }}
+                      <p>Aby klienci mogli łatwiej Cię znaleźć, wymień usługi oraz inne słowa kluczowe kojarzące się z firmą.</p>
+                      <p><i>Np. dla kwiaciarni: kwiaty cięte, kwiaty doniczkowe, wiązanki.</i></p>
+                </li>
+		{{ form_rest(form) }}
 		<li><th></th>
 		    <span style="color:red">*</span> - pola wymagane<br /><br />
 		    <input type="submit" class="button medium green" value="Zapisz zmiany" />
@@ -73,5 +63,4 @@
 
 </script>
 
-{% render "IHQSWysiwygBundle:Script:init" %}
 {% endblock %}

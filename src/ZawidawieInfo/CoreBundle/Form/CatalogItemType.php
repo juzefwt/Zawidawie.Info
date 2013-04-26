@@ -19,13 +19,7 @@ class CatalogItemType extends AbstractType
         $builder
             ->add('name', 'text')
             ->add('description', 'textarea')
-            ->add('keywords', 'collection', array(
-		'type' => new CatalogKeywordType(),
-		'allow_add' => true,
-		'allow_delete' => true,
-		'by_reference' => false,
-		'label' => 'Słowa kluczowe',
-	     ))
+            ->add('keywords', 'text', array('property_path' => false))
             ->add('address')
             ->add('tel')
             ->add('mail')

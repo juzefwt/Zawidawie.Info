@@ -15,7 +15,7 @@
         {% for article in latestArticles %}
                 {% if article.hasPhoto %}
                 <img src="{{ ('uploads/photos/' ~ article.leadingPhoto.path)|apply_filter('thumbnail') }}"
-                                    title="{{ article.leadingPhoto.title }}" style="float:left;margin:3px"/>
+                                    title="{{ article.leadingPhoto.title }}" style="float:right;margin:3px"/>
                 {% endif %}
                 <h2><a href="{{ path('article_show', { 'slug': article.slug }) }}">{{ article.title }}</a></h2>
                 <p>{{ article.content|striptags|truncate(150)|html_entity_decode }}</p>

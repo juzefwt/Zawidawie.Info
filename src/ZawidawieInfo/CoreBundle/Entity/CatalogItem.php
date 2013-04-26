@@ -388,4 +388,34 @@ class CatalogItem
     {
         return count($this->keywords);
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->keywords = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add keywords
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\CatalogKeyword $keywords
+     * @return CatalogItem
+     */
+    public function addKeyword(\ZawidawieInfo\CoreBundle\Entity\CatalogKeyword $keywords)
+    {
+        $this->keywords[] = $keywords;
+    
+        return $this;
+    }
+
+    /**
+     * Remove keywords
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\CatalogKeyword $keywords
+     */
+    public function removeKeyword(\ZawidawieInfo\CoreBundle\Entity\CatalogKeyword $keywords)
+    {
+        $this->keywords->removeElement($keywords);
+    }
 }

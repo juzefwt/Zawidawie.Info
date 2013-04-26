@@ -10,7 +10,7 @@
 
               <br class="clear"/>
 
-              {% render "HerzultForumBundle:Topic:list" with {"category": category, "pagerOptions": {"page": page, 'previous_message': 'Wstecz', 'next_message': 'Dalej', "routeName": "herzult_forum_category_show", 'routeParams': {"slug":category.slug}}} %}
+              {% render(controller("HerzultForumBundle:Topic:list", {"categorySlug": category.slug, "pagerOptions": {"page": page, 'previous_message': 'Wstecz', 'next_message': 'Dalej', "routeName": "herzult_forum_category_show", 'routeParams': {"slug":category.slug}}})) %}
 
       </div>
 </div>

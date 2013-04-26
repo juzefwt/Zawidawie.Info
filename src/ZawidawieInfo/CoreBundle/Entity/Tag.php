@@ -61,4 +61,14 @@ class Tag extends BaseTag
     {
         return $this->tagging;
     }
+
+    /**
+     * Remove tagging
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\Tagging $tagging
+     */
+    public function removeTagging(\ZawidawieInfo\CoreBundle\Entity\Tagging $tagging)
+    {
+        $this->tagging->removeElement($tagging);
+    }
 }

@@ -131,6 +131,15 @@ class CatalogController extends Controller
                 $item->setUser($this->get('security.context')->getToken()->getUser());
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($item);
+
+                foreach (explode(',', $form['keywords']->getData()) as $keyword)
+                {
+                    $k = new CatalogKeyword();
+                    $k->setName($keyword);
+                    $em->persist($k);
+                    $item->addKeyword($k);
+                }
+                $em->persist($item);
                 $em->flush();
 
 		$message = \Swift_Message::newInstance()

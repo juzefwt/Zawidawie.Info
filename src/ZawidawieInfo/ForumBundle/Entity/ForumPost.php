@@ -98,4 +98,14 @@ class ForumPost extends BasePost
 
         return $message;
     }
+
+    /**
+     * Get topic
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumTopic 
+     */
+    public function getTopic()
+    {
+        return $this->topic;
+    }
 }

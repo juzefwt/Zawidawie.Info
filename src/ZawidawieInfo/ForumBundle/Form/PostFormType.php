@@ -39,6 +39,6 @@ class PostFormType extends AbstractType
 
     public function getName()
     {
-        return 'Post';
+        return 'lichess_forum_post';
     }
 }

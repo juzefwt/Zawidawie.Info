@@ -1,7 +1,7 @@
 <h2 class="postNewTitle" id="reply">Odpowiedz w tym temacie</h2>
 <form action="{{ path("herzult_forum_topic_post_create", {"categorySlug": topic.category.slug, "slug": topic.slug, "id": topic.id} ) }}#reply" method="post" id='post_form' name='post_form'>
 
-    {% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'Post_message'} %}
+    {% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'lichess_forum_post_message'} %}
 
     {{ form_errors(form.message) }}
     {{ form_widget(form.message) }}

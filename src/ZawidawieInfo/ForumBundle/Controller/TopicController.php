@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\Form\Error;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use ZawidawieInfo\ForumBundle\Form\NewTopicFormType;
 
 class TopicController extends BaseTopicController
 {
@@ -28,7 +29,7 @@ class TopicController extends BaseTopicController
         if ($category) {
             $topic->setCategory($category);
         }
-        $form = $this->get('form.factory')->createNamed($this->get('lichess_forum.form_type.new_topic'), 'herzult_forum_new_topic_form', $topic);
+        $form = $this->createForm($this->get('lichess_forum.form_type.new_topic'), $topic);
 
         return $this->get('templating')->renderResponse('HerzultForumBundle:Topic:new.html.'.$this->getRenderer(), array(
             'form'      => $form->createView(),
@@ -44,7 +45,7 @@ class TopicController extends BaseTopicController
 
         $topic = $this->get('herzult_forum.repository.topic')->createNewTopic();
         $topic->setCategory($category);
-        $form = $this->get('form.factory')->createNamed($this->get('lichess_forum.form_type.new_topic'), 'herzult_forum_new_topic_form', $topic);
+        $form = $this->createForm($this->get('lichess_forum.form_type.new_topic'), $topic);
         $form->bindRequest($this->get('request'));
 
         if(!$form->isValid()) {

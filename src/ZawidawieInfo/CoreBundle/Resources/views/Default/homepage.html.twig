@@ -6,7 +6,6 @@
   	<div class="content">
 		{% include 'ZawidawieInfoCoreBundle:Default:latestArticles.html.twig' with {'mainArticle': mainArticle, 'latestArticles' : latestArticles} %}
 		{% include 'ZawidawieInfoCoreBundle:Default:latestInvestments.html.twig' with {'investments' : investments} %}
-		<h2>Firmy i usługi</h2>
 		{% include 'ZawidawieInfoCoreBundle:Default:catalog.html.twig' with {'keywords': keywords} %}
   	</div>
   </div>
@@ -17,7 +16,8 @@
 		{% include 'ZawidawieInfoCoreBundle:Default:latestPhotos.html.twig' with {'latestPhotos' : latestPhotos} %}
                 <img src="{{ asset('bundles/zawidawieinfocore/images/czysteogrzewanie.png') }}" style="border:none;width:330px;margin:3px" />
                 <div class="fb-like-box" data-href="https://www.facebook.com/zawidawie.info" data-width="350" data-height="500" data-show-faces="true" data-stream="true" data-header="true"></div>
-		<h3>Odwiedź także</h3>
+                <br class="clear"/>
+                <h3>Odwiedź także</h3>
 		<ul class="links">
 			<li><a target="_blank" href="http://www.mkspolar.pl/">Klub sportowy MKS Polar</a></li>
 			<li><a target="_blank" href="http://www.orzelpawlowice.futbolowo.pl">Osiedlowy Klub Sportowy Orzeł Pawłowice</a></li>

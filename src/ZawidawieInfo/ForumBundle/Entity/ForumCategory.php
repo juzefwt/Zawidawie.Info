@@ -20,4 +20,25 @@ class ForumCategory extends BaseCategory
      * @ORM\OneToOne(targetEntity="ZawidawieInfo\ForumBundle\Entity\ForumPost")
      */
     protected $lastPost;
+
+
+    /**
+     * Get lastTopic
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumTopic 
+     */
+    public function getLastTopic()
+    {
+        return $this->lastTopic;
+    }
+
+    /**
+     * Get lastPost
+     *
+     * @return \ZawidawieInfo\ForumBundle\Entity\ForumPost 
+     */
+    public function getLastPost()
+    {
+        return $this->lastPost;
+    }
 }

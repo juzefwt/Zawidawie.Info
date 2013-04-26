@@ -89,4 +89,27 @@ class CatalogKeyword
     {
         return $this->slug;
     }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     * @return CatalogKeyword
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+    
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return integer 
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
 }

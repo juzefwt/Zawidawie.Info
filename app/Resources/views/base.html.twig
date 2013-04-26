@@ -16,6 +16,7 @@
        '@FOSCommentBundle/Resources/assets/js/*'
        filter='?yui_js' %}
   <script src="{{ asset_url }}"></script>
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic' rel='stylesheet' type='text/css'>
   {% endjavascripts %}
   {% stylesheets output="css/dump.css"
        '@ZawidawieInfoCoreBundle/Resources/public/css/*'
@@ -61,7 +62,7 @@
   <div id="menu">
     <ul id="root" class="level1">
     <li><a href="{{ url('homepage') }}">Aktualności</a></li>
-	  <li><a href="http://zawidawie.info/forum.html">Forum dyskusyjne</a></li>
+	  <li><a href="{{ url('herzult_forum_index') }}">Forum dyskusyjne</a></li>
 	  <li><a href="{{ url('investments') }}">Inwestycje</a></li>
 	  <li><a href="{{ url('events') }}">Wydarzenia</a></li>
 	  <li><a href="{{ url('districts') }}">Osiedla</a></li>

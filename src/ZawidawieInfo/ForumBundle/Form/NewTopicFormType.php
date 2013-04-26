@@ -12,7 +12,7 @@ class NewTopicFormType extends AbstractType
 	{
         $builder->add('subject');
         $builder->add('category');
-        $builder->add('firstPost', 'lichess_forum.post');
+        $builder->add('firstPost', 'lichess_forum_post');
     }
 
     public function getName()

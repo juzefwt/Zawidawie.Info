@@ -12,7 +12,7 @@
         </service>
         <service id="lichess_forum.form_type.post" class="ZawidawieInfo\ForumBundle\Form\PostFormType">
             <argument type="service" id="security.context" />
-            <tag name="form.type" alias="lichess_forum.post" />
+            <tag name="form.type" alias="lichess_forum_post" />
         </service>
         <service id="lichess_forum.form_type.new_topic" class="ZawidawieInfo\ForumBundle\Form\NewTopicFormType" />
 

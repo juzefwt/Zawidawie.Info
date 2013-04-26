@@ -332,4 +332,50 @@ class Item
     {
         return $this->attachments;
     }
+
+    /**
+     * Add children
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\Item $children
+     * @return Item
+     */
+    public function addChildren(\ZawidawieInfo\CoreBundle\Entity\Item $children)
+    {
+        $this->children[] = $children;
+    
+        return $this;
+    }
+
+    /**
+     * Remove children
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\Item $children
+     */
+    public function removeChildren(\ZawidawieInfo\CoreBundle\Entity\Item $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * Add attachments
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ItemAttachment $attachments
+     * @return Item
+     */
+    public function addAttachment(\ZawidawieInfo\CoreBundle\Entity\ItemAttachment $attachments)
+    {
+        $this->attachments[] = $attachments;
+    
+        return $this;
+    }
+
+    /**
+     * Remove attachments
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ItemAttachment $attachments
+     */
+    public function removeAttachment(\ZawidawieInfo\CoreBundle\Entity\ItemAttachment $attachments)
+    {
+        $this->attachments->removeElement($attachments);
+    }
 }

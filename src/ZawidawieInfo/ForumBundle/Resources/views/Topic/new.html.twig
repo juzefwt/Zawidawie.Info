@@ -8,7 +8,7 @@
       <h1>Dodaj temat</h1>
 	<br />
 
-	{% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'herzult_forum_new_topic_form_firstPost_message'} %}
+	{% include 'ZawidawieInfoForumBundle:Post:markitup_javascripts.html.twig' with {'field': 'herzult_forum_post_firstPost_message'} %}
 
 
 	<form action="{{ path("herzult_forum_category_topic_create", {"slug": category.slug} ) }}" id="topic_form" method="post" {{ form_enctype(form) }}>

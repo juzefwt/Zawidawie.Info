@@ -314,4 +314,27 @@ class Photo implements Taggable
     {
         return $this->relatedArticles;
     }
+
+    /**
+     * Add relatedArticles
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedArticles
+     * @return Photo
+     */
+    public function addRelatedArticle(\ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedArticles)
+    {
+        $this->relatedArticles[] = $relatedArticles;
+    
+        return $this;
+    }
+
+    /**
+     * Remove relatedArticles
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedArticles
+     */
+    public function removeRelatedArticle(\ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedArticles)
+    {
+        $this->relatedArticles->removeElement($relatedArticles);
+    }
 }

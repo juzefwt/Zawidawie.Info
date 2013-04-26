@@ -282,4 +282,27 @@ class Article
     {
       return $this->relatedPhotos[0]->getPhoto();
     }
+
+    /**
+     * Add relatedPhotos
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedPhotos
+     * @return Article
+     */
+    public function addRelatedPhoto(\ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedPhotos)
+    {
+        $this->relatedPhotos[] = $relatedPhotos;
+    
+        return $this;
+    }
+
+    /**
+     * Remove relatedPhotos
+     *
+     * @param \ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedPhotos
+     */
+    public function removeRelatedPhoto(\ZawidawieInfo\CoreBundle\Entity\ArticlePhotoReference $relatedPhotos)
+    {
+        $this->relatedPhotos->removeElement($relatedPhotos);
+    }
 }
